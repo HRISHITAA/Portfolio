@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writings - Hrishitaa Kurchania</title>
+    <style>
+        /* --- GLOBAL STYLES (MATCHING YOUR PORTFOLIO) --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-image: url('Space Wow GIF by Feist.gif'); /* Ensure this image is in the folder */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-color: #0b0b0b; 
+            color: #ffffff; 
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 30px;
+            padding-bottom: 60px;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover { color: #667eea; }
+
+        /* --- HEADER --- */
+        .page-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .subheading {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+
+        /* --- LIST OF REVIEWS --- */
+        .review-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .review-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .review-item:hover {
+            transform: translateX(10px); /* Subtle slide effect */
+        }
+
+        .review-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #667eea; /* Purple accent like your screenshot */
+            text-decoration: none;
+        }
+
+        .review-title:hover {
+            color: #764ba2;
+        }
+
+        .review-date {
+            font-size: 0.9rem;
+            color: #888;
+            white-space: nowrap; /* Keeps date on one line */
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 80px;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .review-item { flex-direction: column; align-items: flex-start; gap: 5px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="https://github.com/HRISHITAA?tab=repositories">Projects</a>
+            <a href="index.html#about">About</a>
+        </nav>
+
+        <div class="page-header">
+            <h1>Reviews</h1>
+            <div class="subheading">A short summary and my perspective on papers I've read.</div>
+        </div>
+
+        <div class="review-list">
+            
+            <div class="review-item">
+                <a href="review-paper-1.html" class="review-title">Review: Deep Learning in Robotics (Example)</a>
+                <span class="review-date">Dec 27, 2025</span>
+            </div>
+
+            <div class="review-item">
+                <a href="#" class="review-title">Review: Computer Vision Trends</a>
+                <span class="review-date">Nov 14, 2025</span>
+            </div>
+
+        </div>
+
+        <footer>
+            Hrish © 2025
+        </footer>
+    </div>
+
+</body>
+</html>
