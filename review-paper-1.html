@@ -37,9 +37,20 @@
             padding-left: 15px;
         }
         
+        h3 {
+            font-size: 1.2rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #fff;
+            font-weight: 600;
+        }
+
         /* Brighter paragraph text for readability against black */
         p { margin-bottom: 20px; font-size: 1.1rem; color: #eee; }
         
+        ul, ol { margin-bottom: 20px; margin-left: 20px; color: #eee; }
+        li { margin-bottom: 10px; }
+
         /* Code snippet box style */
         .highlight-box {
             background: rgba(255,255,255,0.05); /* Subtle gray box */
@@ -49,6 +60,24 @@
             margin: 30px 0;
             font-family: monospace;
             color: #ddd;
+            overflow-x: auto; /* Adds scrollbar if text is too long */
+        }
+
+        /* --- IMAGE STYLES --- */
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid #333;
+            display: block;
+        }
+        .caption {
+            font-size: 0.9rem;
+            color: #888;
+            text-align: center;
+            margin-top: -10px;
+            margin-bottom: 30px;
         }
     </style>
 </head>
@@ -64,14 +93,87 @@
             <h1>QGroundControl</h1>
             
             <div class="meta">
-                Dec 27, 2025 • Read time: 5 mins • Tag: Robotics
+                Dec 27, 2025 • Read time: 8 mins 
             </div>
 
             <h2>The Summary</h2>
             
+            <p>
+                QGroundControl (QGC) provides full flight control and mission planning for any MAVLink-enabled robot. The primary goal is to provide a easier editable user interface for the developer to configure. It serves as the primary ground control station for the PX4 autopilot stack.
+            </p>
+
+            <p>
+                QGC allows operators to plan complex autonomous missions on a desktop and also provide visual data coming from the vehicle.
+            </p>
+
+            <img src="Screenshot 2026-01-02 at 7.44.25 PM.png" alt="QGC MAVLink Connection Diagram">
+            <div class="caption">Figure 1: High-level connection architecture between QGC and the Vehicle.</div>
+
+            <h2>Technical Workflow: PX4 Integration</h2>
+
+            <h3>1. Installation</h3>
+            <p>
+                Installation direction at: https://docs.qgroundcontrol.com/master/en/qgc-user-guide/getting_started/download_and_install.html.
+            </p>
+
+            <div class="highlight-box">
+                # Ubuntu Permission Setup (User to dialout group)<br>
+                sudo usermod -aG dialout $USER<br>
+                <br>
+                # Remove modem manager (interferes with serial ports)<br>
+                sudo apt-get remove modemmanager -y<br>
+                <br>
+                # Install GStreamer (required for video streaming)<br>
+                sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-libav
+            </div>
+
+            <h3>2. Initial Configuration</h3>
+            <p>
+                Once QGC is running, connecting a vehicle's flight controller via USB automatically triggers the setup logic. The <strong>Vehicle Setup</strong> view (Gear Icon) is where the core configuration happens:
+            </p>
+            <ul>
+                <li><strong>Firmware:</strong> QGC detects the board (e.g., Pixhawk) and offers to flash the stable PX4 Pro stack.</li>
+                <li><strong>Airframe:</strong> You must select the specific vehicle geometry (e.g., Hexarotor X, Quadcopter, VTOL) or custom (if applies) and click "Apply and Restart".</li>
+                <li><strong>Sensors:</strong> A guided wizard walks you through calibrating the Compass (rotating the drone on all axes), Gyroscope (holding it still), and Accelerometer.</li>
+                <li><strong>Radio:</strong> Requires moving the transmitter sticks to their limits to map channels and set min/max values.</li>
+                <li><strong>Joystick:</strong> To enable joystick AND DISABLE THE RC MODE navigate to view > parameters > search: <code>COM_RC_IN_MODE</code></li>
+            </ul>
+
+            <img src="Screenshot 2026-01-02 at 6.57.15 PM.jpg" alt="COM_RC_IN_MODE Parameter Setting">
+            <div class="caption">Figure 2: Configuring COM_RC_IN_MODE to enable MAVLink joystick control.</div>
+
+            <h3>3. Flight Modes & Safety</h3>
+            <p>
+                For PX4, you map specific RC switches to flight modes. A common setup involves a 3-position switch configured for:
+            </p>
+            <ol>
+                <li><strong>Position Mode:</strong> GPS-assisted hovering (easiest for beginners).</li>
+                <li><strong>Altitude Mode:</strong> Maintains height but drifts with wind.</li>
+                <li><strong>Return Mode:</strong> Automatically returns the drone to the launch point.</li>
+            </ol>
+
+            <h3>4. Mission Planning & Operation</h3>
+            <p>
+                The <strong>Plan View</strong> allows you to click on the map to place waypoints. For surveying, the "Pattern" tool automates the creation of grid flights for aerial mapping.
+            </p>
+            <p>
+                During flight, the <strong>Fly View</strong> displays the live video feed (if configured) and critical telemetry like battery voltage, satellite count, and altitude.
+            </p>
 
             <h2>My Perspective</h2>
             
+            <p>
+                In the robotics ecosystem, the "user experience" is often an afterthought, but QGroundControl changes that narrative. While Mission Planner (the alternative GCS) offers incredibly deep parameters for debugging, QGroundControl shines in its modern, intuitive interface.
+            </p>
+
+            <p>
+                For field operations, the ability to run QGC on an iPad or Android tablet is a game-changer. It reduces the amount of heavy gear required and simplifies the pre-flight checklist. The touch-optimized interface makes dragging waypoints and adjusting mission parameters feel natural rather than technical.
+            </p>
+
+            <p>
+                Ultimately, if you are developing new vehicle types or need deep log analysis, you might stick to Mission Planner. But for reliable day-to-day operations and a setup workflow that doesn't require a manual to understand, QGroundControl is the superior choice.
+            </p>
+
         </article>
 
     </div>
