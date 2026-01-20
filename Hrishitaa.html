@@ -30,28 +30,28 @@
             padding: 60px 20px;
         }
 
-        /* --- NEW LAYOUT: Split Screen --- */
+        /* --- LAYOUT: Split Screen --- */
         .main-grid {
             display: grid;
-            grid-template-columns: 1fr 300px; /* Profile takes remaining space, Strip takes 300px */
+            /* 300px for Strip (Left), Rest for Profile (Right) */
+            grid-template-columns: 300px 1fr; 
             gap: 50px;
             align-items: start;
         }
 
         .profile-section {
-            text-align: center; /* Keeps your original centering */
+            text-align: center;
         }
 
-        /* --- NEW: Vertical Marquee Styles --- */
+        /* --- VERTICAL MARQUEE STYLES --- */
         .marquee-wrapper {
-            height: 600px; /* Height of the strip */
+            height: 600px;
             overflow: hidden;
             position: relative;
             border-left: 1px solid rgba(255, 255, 255, 0.1);
             border-right: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(0, 0, 0, 0.2); /* Slight dark tint */
+            background: rgba(0, 0, 0, 0.2);
             border-radius: 15px;
-            /* Mask to fade images at top and bottom */
             mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
             -webkit-mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
         }
@@ -61,12 +61,12 @@
             flex-direction: column;
             gap: 20px;
             padding: 20px;
-            /* The animation */
-            animation: scroll-vertical 20s linear infinite;
+            animation: scroll-vertical 25s linear infinite;
         }
 
+        /* Pause entire scroll on hover */
         .marquee-track:hover {
-            animation-play-state: paused; /* Pauses when you hover over it */
+            animation-play-state: paused;
         }
 
         .marquee-item {
@@ -75,26 +75,54 @@
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             border: 2px solid rgba(102, 126, 234, 0.3);
+            position: relative; /* Needed for the caption overlay */
             transition: transform 0.3s ease;
-        }
-        
-        .marquee-item:hover {
-            border-color: #667eea;
-            transform: scale(1.02);
         }
 
         .marquee-item img {
             width: 100%;
             height: auto;
             display: block;
+            transition: transform 0.3s ease;
+        }
+
+        /* --- HOVER DESCRIPTION STYLES --- */
+        .caption-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75); /* Darkens the image */
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 15px;
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.3s ease;
+            font-weight: 500;
+            font-size: 1.1rem;
+            backdrop-filter: blur(2px); /* Slight blur effect */
+        }
+
+        /* When hovering the item, show the caption */
+        .marquee-item:hover .caption-overlay {
+            opacity: 1;
+        }
+
+        .marquee-item:hover {
+            border-color: #667eea;
+            transform: scale(1.02);
         }
 
         @keyframes scroll-vertical {
             0% { transform: translateY(0); }
-            100% { transform: translateY(-50%); } /* Moves up by half the track height */
+            100% { transform: translateY(-50%); }
         }
 
-        /* --- Your Original Styles --- */
+        /* --- Original Profile Styles --- */
         .profile-image {
             width: 180px;
             height: 180px;
@@ -248,12 +276,18 @@
         /* --- Mobile Responsive --- */
         @media (max-width: 900px) {
             .main-grid {
-                grid-template-columns: 1fr; /* Stack them */
+                grid-template-columns: 1fr; /* Stack vertically */
             }
+            
+            /* IMPORTANT: Puts the Profile ON TOP of the picture strip on mobile */
+            .profile-section {
+                order: -1; 
+            }
+
             .marquee-wrapper {
                 height: 400px;
                 max-width: 400px;
-                margin: 0 auto; /* Center the strip on mobile */
+                margin: 0 auto;
             }
         }
 
@@ -271,6 +305,61 @@
         
         <div class="main-grid">
             
+            <div class="marquee-wrapper">
+                <div class="marquee-track">
+                    
+                    <div class="marquee-item">
+                        <img src="finraygripper.JPG" alt="Finray_gripper">
+                        <div class="caption-overlay">A gripper inspired by this fins of fished, the internal connectord made of PLA grives it the flexibility to deform in accordance to the object it grips on.</div>
+                    </div>
+
+                    <div class="marquee-item">
+                        <img src="project1.jpg" alt="Project Girl 1">
+                        <div class="caption-overlay">Built a solar rover prototype</div>
+                    </div>
+
+                    <div class="marquee-item">
+                        <img src="volunteer1.jpg" alt="Volunteer Work">
+                        <div class="caption-overlay">Volunteering at the shelter</div>
+                    </div>
+
+                    <div class="marquee-item">
+                        <img src="hobby2.jpg" alt="Hobby 2">
+                        <div class="caption-overlay">Writing poetry in the park</div>
+                    </div>
+
+                    <div class="marquee-item">
+                        <img src="project2.jpg" alt="Project Girl 2">
+                        <div class="caption-overlay">Designing 3D printed arms</div>
+                    </div>
+                    <div class="marquee-item">
+                        <img src="hobby1.jpg" alt="Hobby">
+                        <div class="caption-overlay">Teaching robotics to kids</div>
+                    </div>
+
+                    <div class="marquee-item">
+                        <img src="project1.jpg" alt="Project Girl 1">
+                        <div class="caption-overlay">Built a solar rover prototype</div>
+                    </div>
+
+                    <div class="marquee-item">
+                        <img src="volunteer1.jpg" alt="Volunteer Work">
+                        <div class="caption-overlay">Volunteering at the shelter</div>
+                    </div>
+
+                    <div class="marquee-item">
+                        <img src="hobby2.jpg" alt="Hobby 2">
+                        <div class="caption-overlay">Writing poetry in the park</div>
+                    </div>
+
+                    <div class="marquee-item">
+                        <img src="project2.jpg" alt="Project Girl 2">
+                        <div class="caption-overlay">Designing 3D printed arms</div>
+                    </div>
+
+                </div>
+            </div>
+
             <div class="profile-section">
                 <div class="profile-image">
                     <img src="Image-2.png" alt="Hrishitaa Kurchania">
@@ -310,24 +399,6 @@
                     <a href="https://github.com/HRISHITAA?tab=repositories">Projects</a>
                     <a href="https://github.com/HRISHITAA/About">About</a>
                 </nav>
-            </div>
-
-            <div class="marquee-wrapper">
-                <div class="marquee-track">
-                    
-                    <div class="marquee-item"><img src="hobby1.jpg" alt="Hobby"></div>
-                    <div class="marquee-item"><img src="project1.jpg" alt="Project Girl 1"></div>
-                    <div class="marquee-item"><img src="volunteer1.jpg" alt="Volunteer Work"></div>
-                    <div class="marquee-item"><img src="hobby2.jpg" alt="Hobby 2"></div>
-                    <div class="marquee-item"><img src="project2.jpg" alt="Project Girl 2"></div>
-
-                    <div class="marquee-item"><img src="hobby1.jpg" alt="Hobby"></div>
-                    <div class="marquee-item"><img src="project1.jpg" alt="Project Girl 1"></div>
-                    <div class="marquee-item"><img src="volunteer1.jpg" alt="Volunteer Work"></div>
-                    <div class="marquee-item"><img src="hobby2.jpg" alt="Hobby 2"></div>
-                    <div class="marquee-item"><img src="project2.jpg" alt="Project Girl 2"></div>
-
-                </div>
             </div>
 
         </div>
