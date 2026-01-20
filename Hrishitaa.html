@@ -34,7 +34,7 @@
         .main-grid {
             display: grid;
             /* 300px for Strip (Left), Rest for Profile (Right) */
-            grid-template-columns: 300px 1fr; 
+            grid-template-columns: 600px 1fr; 
             gap: 50px;
             align-items: start;
         }
@@ -45,7 +45,7 @@
 
         /* --- VERTICAL MARQUEE STYLES --- */
         .marquee-wrapper {
-            height: 600px;
+            height: 1000px;
             overflow: hidden;
             position: relative;
             border-left: 1px solid rgba(255, 255, 255, 0.1);
@@ -61,7 +61,7 @@
             flex-direction: column;
             gap: 20px;
             padding: 20px;
-            animation: scroll-vertical 25s linear infinite;
+            animation: scroll-vertical 15s linear infinite;
         }
 
         /* Pause entire scroll on hover */
@@ -71,6 +71,7 @@
 
         .marquee-item {
             width: 100%;
+            height: 300px
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
