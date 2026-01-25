@@ -5,45 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Writings - Hrishitaa Kurchania</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Specific Styles just for the Writings List */
-        .writing-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-top: 40px;
-        }
-
-        .writing-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 25px;
-            background: rgba(139, 69, 123, 0.1); /* Matches your theme */
-            border: 1px solid rgba(183, 110, 163, 0.3);
-            border-radius: 12px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .writing-item:hover {
-            transform: translateX(10px);
-            background: rgba(139, 69, 123, 0.2);
-            border-color: #b76ea3;
-        }
-
-        .writing-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #f4ebf1;
-        }
-
-        .writing-date {
-            font-size: 0.9rem;
-            color: #d4b5cc;
-            font-family: monospace;
-        }
-    </style>
 </head>
 <body>
 
@@ -75,19 +36,68 @@
     </div>
 
     <div class="container">
-        <h2 class="page-title">Reviews & Writings</h2>
-        <p class="page-subtitle">A short summary and my perspective on papers and documentation.</p>
+        <h2 class="page-title">Technical Writings</h2>
+        <p class="page-subtitle">Articles, research notes, and thoughts on robotics technology</p>
 
-        <div class="writing-list">
+        <div class="projects-grid">
             
-            <a href="review-paper-1.html" class="writing-item">
-                <span class="writing-title">QGroundControl</span>
-                <span class="writing-date">Dec 27, 2025</span>
+            <a href="fusionCAD2URDF.html" class="project-card">
+                <div class="project-info">
+                    <h3>Fusion 360 to ROS 2 URDF</h3>
+                    <p>The real-world guide to exporting complex, nested Fusion 360 assemblies into ROS 2 without losing your mind.</p>
+                    <div class="project-tags">
+                        <span class="tag">Tutorial</span>
+                        <span class="tag">ROS 2</span>
+                        <span class="tag">2026</span>
+                    </div>
+                </div>
             </a>
 
-            <a href="fusionCAD2URDF.html" class="writing-item">
-                <span class="writing-title">FusionCAD2URDF: Complementary Document</span>
-                <span class="writing-date">Jan 19, 2026</span>
+            <a href="qgc-guide.html" class="project-card"> <div class="project-info">
+                    <h3>QGroundControl Setup</h3>
+                    <p>A comprehensive overview of setting up QGroundControl for MAVLink-enabled robots and PX4 stacks.</p>
+                    <div class="project-tags">
+                        <span class="tag">Drones</span>
+                        <span class="tag">Software</span>
+                        <span class="tag">2025</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="project-card">
+                <div class="project-info">
+                    <h3>The Future of Soft Manipulation</h3>
+                    <p>An analysis of how bio-inspired compliant mechanisms are changing the landscape of agricultural robotics and delicate handling tasks.</p>
+                    <div class="project-tags">
+                        <span class="tag">Research</span>
+                        <span class="tag">Soft Robotics</span>
+                        <span class="tag">2025</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="project-card">
+                <div class="project-info">
+                    <h3>Building Low-Cost Tactile Sensors</h3>
+                    <p>A step-by-step guide on fabricating resistive pressure sensors using conductive velostat and silicone for hobbyist robotics projects.</p>
+                    <div class="project-tags">
+                        <span class="tag">Tutorial</span>
+                        <span class="tag">Hardware</span>
+                        <span class="tag">2024</span>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#" class="project-card">
+                <div class="project-info">
+                    <h3>Integration of Vision and Touch</h3>
+                    <p>Explaining the sensor fusion algorithms required to combine visual data with tactile feedback for more robust object estimation.</p>
+                    <div class="project-tags">
+                        <span class="tag">Algorithms</span>
+                        <span class="tag">Sensor Fusion</span>
+                        <span class="tag">2024</span>
+                    </div>
+                </div>
             </a>
 
         </div>
