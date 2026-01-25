@@ -4,115 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fusion 360 to ROS 2 URDF: The Real-World Guide</title>
-    <style>
-        /* --- GLOBAL STYLES --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #000000; 
-            color: #ffffff; 
-            line-height: 1.8;
-        }
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-        
-        /* --- NAV --- */
-        nav { display: flex; justify-content: space-between; padding-bottom: 60px; }
-        nav a { color: #bbb; text-decoration: none; font-size: 1rem; transition: color 0.3s ease;}
-        nav a:hover { color: #fff; }
-        .back-btn { color: #667eea; font-weight: bold; }
-
-        /* --- ARTICLE CONTENT --- */
-        h1 { font-size: 2.5rem; margin-bottom: 10px; line-height: 1.2; }
-        .meta { color: #bbb; margin-bottom: 40px; font-size: 0.9rem; }
-        
-        h2 { 
-            font-size: 1.5rem; 
-            margin-top: 40px; 
-            margin-bottom: 20px; 
-            color: #667eea; 
-            border-left: 4px solid #667eea;
-            padding-left: 15px;
-        }
-        
-        h3 {
-            font-size: 1.2rem;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: #fff;
-            font-weight: 600;
-        }
-
-        p { margin-bottom: 20px; font-size: 1.1rem; color: #eee; }
-        a { color: #667eea; text-decoration: none; border-bottom: 1px dotted #667eea; }
-        a:hover { color: #fff; border-bottom: 1px solid #fff; }
-        
-        ul, ol { margin-bottom: 20px; margin-left: 20px; color: #eee; }
-        li { margin-bottom: 10px; }
-
-        /* Inline Code Styling */
-        code {
-            background-color: rgba(255,255,255,0.15);
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-family: monospace;
-            color: #fab1a0; /* Soft coral to pop against black */
-            font-size: 0.9em;
-        }
-
-        /* Block Code Styling */
-        .highlight-box {
-            background: rgba(255,255,255,0.05);
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.1);
-            margin: 30px 0;
-            font-family: monospace;
-            color: #ddd;
-            overflow-x: auto;
-        }
-
-        /* Warning/Error Box Styling (Adapted for Dark Theme) */
-        .warning-box {
-            background: rgba(231, 76, 60, 0.1); /* Red tint */
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #e74c3c;
-            margin: 30px 0;
-            color: #eee;
-        }
-        .warning-box h3 { margin-top: 0; color: #fab1a0; }
-
-        /* --- IMAGE STYLES --- */
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin: 20px 0;
-            border: 1px solid #333;
-            display: block;
-        }
-        .caption {
-            font-size: 0.9rem;
-            color: #888;
-            text-align: center;
-            margin-top: -10px;
-            margin-bottom: 30px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="container">
-        <nav>
-            <a href="writings.html" class="back-btn">← Back to Writings</a>
-            <a href="Hrishitaa.html">Home</a>
-        </nav>
+    <div class="sticky-nav" id="stickyNav">
+        <a href="Hrishitaa.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+            <span class="nav-text">Home</span>
+        </a>
+        <a href="projects.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+            </svg>
+            <span class="nav-text">Projects</span>
+        </a>
+        <a href="writings.html" class="nav-item active">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+            </svg>
+            <span class="nav-text">Writings</span>
+        </a>
+        <a href="about.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+            <span class="nav-text">About</span>
+        </a>
+    </div>
 
-        <article>
-            <h1>Fusion 360 to ROS 2 URDF: The Real-World Guide</h1>
+    <div class="container">
+        <div class="article-content">
             
-            <div class="meta">
-                Jan 19, 2026 • Read time: 10 mins 
+            <div class="article-header">
+                <a href="writings.html" style="font-size: 0.9rem; margin-bottom: 20px; display: inline-block;">← Back to Writings</a>
+                <h1>Fusion 360 to ROS 2 URDF: The Real-World Guide</h1>
+                <div class="meta">
+                    Jan 19, 2026 • Read time: 10 mins 
+                </div>
             </div>
 
             <p>
@@ -140,7 +71,7 @@
             </div>
 
             
-            <div class="caption">Figure 1: The correct hierarchy. Note that bodies are inside base_link, not floating at the top level.</div>
+            <p style="font-size: 0.9rem; color: #888; text-align: center; margin-top: 10px;">Figure 1: The correct hierarchy. Note that bodies are inside base_link, not floating at the top level.</p>
 
             <h3>Step A: The "Base Link" Container</h3>
             <ul>
@@ -173,7 +104,7 @@
             </ul>
             
             
-            <div class="caption">Figure 2: The As-Built Joint menu. Ensure the correct Motion Type is selected.</div>
+            <p style="font-size: 0.9rem; color: #888; text-align: center; margin-top: 10px;">Figure 2: The As-Built Joint menu. Ensure the correct Motion Type is selected.</p>
 
             <h2>3. Terminal & Script Installation</h2>
             <p>If you are not used to the command line, the standard installation instructions can cause <code>zsh: parse error</code> or <code>No such file</code> errors.</p>
@@ -213,9 +144,18 @@ cp -r URDF_Exporter_Ros2 "$HOME/Library/Application Support/Autodesk/Autodesk Fu
                 <li><strong>Orientation:</strong> Red axis (X) points Forward. Blue axis (Z) points Up.</li>
             </ul>
 
-        </article>
-
+        </div>
     </div>
 
+    <footer>
+        <p>&copy; 2026 Hrishitaa Kurchania. Crafted with code and curiosity.</p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/hrishitaa-kurchania/" target="_blank">LinkedIn</a> • 
+            <a href="https://github.com/HRISHITAA" target="_blank">GitHub</a> • 
+            <a href="mailto:hrishitaa8@gmail.com">Email</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
