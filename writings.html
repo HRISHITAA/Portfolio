@@ -4,141 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Writings - Hrishitaa Kurchania</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* --- GLOBAL STYLES (MATCHING YOUR PORTFOLIO) --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-image: url('Space Wow GIF by Feist.gif'); /* Ensure this image is in the folder */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            background-color: #0b0b0b; 
-            color: #ffffff; 
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        /* --- NAVIGATION --- */
-        nav {
-            display: flex;
-            justify-content: flex-end;
-            gap: 30px;
-            padding-bottom: 60px;
-        }
-
-        nav a {
-            color: #e0e0e0;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover { color: #667eea; }
-
-        /* --- HEADER --- */
-        .page-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
-
-        .subheading {
-            font-size: 1.2rem;
-            color: #ccc;
-        }
-
-        /* --- LIST OF REVIEWS --- */
-        .review-list {
+        /* Specific Styles just for the Writings List */
+        .writing-list {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 20px;
+            margin-top: 40px;
         }
 
-        .review-item {
+        .writing-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            transition: transform 0.2s ease;
+            padding: 25px;
+            background: rgba(139, 69, 123, 0.1); /* Matches your theme */
+            border: 1px solid rgba(183, 110, 163, 0.3);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
 
-        .review-item:hover {
-            transform: translateX(10px); /* Subtle slide effect */
+        .writing-item:hover {
+            transform: translateX(10px);
+            background: rgba(139, 69, 123, 0.2);
+            border-color: #b76ea3;
         }
 
-        .review-title {
+        .writing-title {
             font-size: 1.4rem;
             font-weight: 600;
-            color: #667eea; /* Purple accent like your screenshot */
-            text-decoration: none;
+            color: #f4ebf1;
         }
 
-        .review-title:hover {
-            color: #764ba2;
-        }
-
-        .review-date {
+        .writing-date {
             font-size: 0.9rem;
-            color: #888;
-            white-space: nowrap; /* Keeps date on one line */
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 80px;
-            color: #666;
-        }
-
-        @media (max-width: 600px) {
-            .review-item { flex-direction: column; align-items: flex-start; gap: 5px; }
+            color: #d4b5cc;
+            font-family: monospace;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <nav>
-            <a href="Hrishitaa.html">Home</a>
-            <a href="https://github.com/HRISHITAA?tab=repositories">Projects</a>
-            <a href="index.html#about">About</a>
-        </nav>
-
-        <div class="page-header">
-            <h1>Reviews</h1>
-            <div class="subheading">A short summary and my perspective on papers and complementary documentaion on repos I have used.</div>
-        </div>
-
-        <div class="review-list">
-        
-            <div class="review-item">
-                <a href="review-paper-1.html" class="review-title">QGroundControl</a>
-                <span class="review-date">Dec 27, 2025</span>
-            </div>
-        
-            <div class="review-item">
-                <a href="fusionCAD2URDF.html" class="review-title">FusionCAD2URDf:complementary Document </a>
-                <span class="review-date">Jan 19, 2026</span>
-            </div>
-    
-        </div>
-
-        <footer>
-            Hrish © 2025
-        </footer>
+    <div class="sticky-nav" id="stickyNav">
+        <a href="index.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+            <span class="nav-text">Home</span>
+        </a>
+        <a href="projects.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+            </svg>
+            <span class="nav-text">Projects</span>
+        </a>
+        <a href="writings.html" class="nav-item active">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+            </svg>
+            <span class="nav-text">Writings</span>
+        </a>
+        <a href="about.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+            <span class="nav-text">About</span>
+        </a>
     </div>
 
+    <div class="container">
+        <h2 class="page-title">Reviews & Writings</h2>
+        <p class="page-subtitle">A short summary and my perspective on papers and documentation.</p>
+
+        <div class="writing-list">
+            
+            <a href="review-paper-1.html" class="writing-item">
+                <span class="writing-title">QGroundControl</span>
+                <span class="writing-date">Dec 27, 2025</span>
+            </a>
+
+            <a href="fusionCAD2URDF.html" class="writing-item">
+                <span class="writing-title">FusionCAD2URDF: Complementary Document</span>
+                <span class="writing-date">Jan 19, 2026</span>
+            </a>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
