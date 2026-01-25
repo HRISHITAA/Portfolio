@@ -575,3 +575,66 @@ footer {
 .project-card:hover .project-image img {
     transform: scale(1.05);
 }
+
+/* =========================================
+   12. WRITINGS (NEW ADDITION)
+   ========================================= */
+
+.writings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.writing-card {
+    background-color: #1a1a20; /* Slightly lighter than black background */
+    border: 1px solid rgba(183, 110, 163, 0.15); /* Subtle purple border */
+    border-radius: 16px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    text-decoration: none; /* Removes link underline */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Hover Effect */
+.writing-card:hover {
+    transform: translateY(-5px); /* Moves up slightly */
+    border-color: #b76ea3; /* Border glows pink */
+    box-shadow: 0 10px 30px rgba(183, 110, 163, 0.1);
+}
+
+.writing-card h3 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.writing-card p {
+    color: #bbbbbb;
+    font-size: 1rem;
+    line-height: 1.6;
+    flex-grow: 1; /* Pushes tags to the bottom */
+    margin-bottom: 20px;
+}
+
+/* Tag/Pill Styling within writing cards */
+.writing-card .tags {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: auto;
+}
+
+.writing-card .tag {
+    background-color: rgba(183, 110, 163, 0.1);
+    color: #d4b5cc;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-family: monospace;
+    border: 1px solid rgba(183, 110, 163, 0.2);
+}
