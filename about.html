@@ -5,62 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - Hrishitaa Kurchania</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Specific Styles for About Page */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 50px;
-            margin-top: 40px;
-            align-items: start;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            color: #e8d5e3;
-            line-height: 1.8;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-        }
-
-        .highlight-box {
-            background: rgba(139, 69, 123, 0.1);
-            border: 1px solid rgba(183, 110, 163, 0.3);
-            border-radius: 12px;
-            padding: 30px;
-        }
-
-        .highlight-box h3 {
-            color: #b76ea3;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-
-        .skill-list {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill-tag {
-            background: rgba(183, 110, 163, 0.2);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: #f4ebf1;
-            border: 1px solid rgba(183, 110, 163, 0.1);
-        }
-
-        /* Mobile layout */
-        @media (max-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
 <body>
 
@@ -93,45 +37,97 @@
 
     <div class="container">
         <h2 class="page-title">About Me</h2>
-        <p class="page-subtitle">Hardware Robotics Engineer & Tactile Sensing Specialist</p>
 
-        <div class="about-grid">
+        <div class="main-grid" style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-bottom: 60px;">
             
-            <div class="highlight-box">
-                <h3>Contact</h3>
-                <p><strong>Email:</strong><br> your-email@example.com</p>
-                <br>
-                <h3>Skills</h3>
-                <ul class="skill-list">
-                    <li class="skill-tag">Robotics</li>
-                    <li class="skill-tag">CAD Design</li>
-                    <li class="skill-tag">Python</li>
-                    <li class="skill-tag">C++</li>
-                    <li class="skill-tag">Tactile Sensors</li>
-                    <li class="skill-tag">PCB Design</li>
-                </ul>
-                <br>
-                <h3>Socials</h3>
-                <p>
-                    <a href="https://github.com/HRISHITAA" style="color:#b76ea3;">GitHub</a> • 
-                    <a href="#" style="color:#b76ea3;">LinkedIn</a>
-                </p>
+            <div class="profile-section">
+                <div class="profile-image" style="max-width: 100%;">
+                    <img src="Image-2.png" alt="Hrishitaa Kurchania" style="width: 100%; border-radius: 12px; border: 2px solid rgba(183, 110, 163, 0.3);">
+                </div>
             </div>
+            
+            <div style="color: #d4b5cc; font-size: 1.1rem;">
+                <p style="margin-bottom: 20px;">
+                    I am a Hardware Robotics Engineer passionate about bridging the gap between digital perception and physical interaction. My work focuses heavily on <strong>tactile sensing</strong>, <strong>bio-inspired design</strong>, and <strong>human-robot interaction</strong>.
+                </p>
+                <p style="margin-bottom: 20px;">
+                    With a background in Electrical Engineering and Robotics, I enjoy the messy intersection where hardware meets software. I thrive in the lab, whether I'm debugging a noisy signal on an oscilloscope, molding silicone for a soft gripper, or writing ROS nodes to visualize sensor data.
+                </p>
+                <p style="margin-bottom: 20px;">
+                    Currently, I am exploring how high-resolution tactile sensors can enable robots to perform dexterous manipulation tasks that were previously impossible.
+                </p>
 
-            <div class="about-text">
-                <p>
-                    Hello! I'm Hrishitaa, a passionate Hardware Robotics Engineer with a focus on bio-inspired mechanisms and tactile sensing technologies. I love building things that move, sense, and interact with the real world.
-                </p>
-                <p>
-                    My journey involves bridging the gap between mechanical design and electronic sensing. I have worked on projects ranging from fin-ray grippers to advanced visual tactile sensors.
-                </p>
-                <p>
-                    When I'm not in the lab, I'm documenting my findings and reviewing papers to help the community understand complex robotics concepts better.
-                </p>
+                <h3 style="color: #f4ebf1; margin: 30px 0 15px;">Education</h3>
+                <div style="border-left: 3px solid #b76ea3; padding-left: 20px; margin-bottom: 20px;">
+                    <h4 style="color: #f4ebf1; margin: 0;">Master of Science in Robotics</h4>
+                    <p style="color: #b76ea3; margin: 5px 0;">University Name Here</p>
+                    <p style="font-size: 0.9rem; margin: 0;">2022 - 2024</p>
+                </div>
+                <div style="border-left: 3px solid #b76ea3; padding-left: 20px;">
+                    <h4 style="color: #f4ebf1; margin: 0;">Bachelor of Engineering in Electronics</h4>
+                    <p style="color: #b76ea3; margin: 5px 0;">University Name Here</p>
+                    <p style="font-size: 0.9rem; margin: 0;">2018 - 2022</p>
+                </div>
             </div>
-
         </div>
+
+        <h3 style="color: #f4ebf1; margin-bottom: 20px;">Technical Skills</h3>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h4>Hardware & Electronics</h4>
+                <ul>
+                    <li>PCB Design (Altium, Eagle, KiCAD)</li>
+                    <li>Microcontrollers (STM32, ESP32, Arduino)</li>
+                    <li>Sensor Integration (I2C, SPI, UART)</li>
+                    <li>Circuit Analysis & Debugging</li>
+                    <li>Power Management Systems</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h4>Robotics & Control</h4>
+                <ul>
+                    <li>ROS / ROS2 Navigation Stack</li>
+                    <li>Kinematics & Dynamics</li>
+                    <li>PID Control Systems</li>
+                    <li>Soft Robotics Fabrication</li>
+                    <li>Motor Control (BLDC, Stepper)</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h4>Software & Tools</h4>
+                <ul>
+                    <li>C / C++ (Embedded)</li>
+                    <li>Python (Data Analysis, CV)</li>
+                    <li>MATLAB & Simulink</li>
+                    <li>SolidWorks / Fusion 360</li>
+                    <li>Git / Version Control</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h4>Fabrication</h4>
+                <ul>
+                    <li>3D Printing (FDM, SLA)</li>
+                    <li>Laser Cutting</li>
+                    <li>Soldering (SMD/Through-hole)</li>
+                    <li>Silicon Molding & Casting</li>
+                    <li>Rapid Prototyping</li>
+                </ul>
+            </div>
+        </div>
+
     </div>
+
+    <footer style="text-align: center; margin-top: 60px; padding: 20px; color: #888; font-size: 0.9rem;">
+        <p>&copy; 2026 Hrishitaa Kurchania. Crafted with code and curiosity.</p>
+        <div class="social-links" style="margin-top: 10px;">
+            <a href="https://www.linkedin.com/in/hrishitaa-kurchania/" target="_blank" style="color:#b76ea3;">LinkedIn</a> • 
+            <a href="https://github.com/HRISHITAA" target="_blank" style="color:#b76ea3;">GitHub</a> • 
+            <a href="mailto:hrishitaa8@gmail.com" style="color:#b76ea3;">Email</a>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
