@@ -638,3 +638,9 @@ footer {
     font-family: monospace;
     border: 1px solid rgba(183, 110, 163, 0.2);
 }
+.fixed-ratio-img {
+    width: 100%;       /* Or specific size like 500px */
+    height: 300px;     /* Your desired fixed height */
+    object-fit: cover; /* This crops the edges instead of squishing */
+    border-radius: 12px; /* Optional: matches your theme */
+}
