@@ -644,3 +644,13 @@ footer {
     object-fit: cover; /* This crops the edges instead of squishing */
     border-radius: 12px; /* Optional: matches your theme */
 }
+/* --- BRAND NAME (New) --- */
+.brand-name {
+   display: block;
+   color: #b76ea3; /* Your accent pink */
+   font-size: 0.9rem;
+   font-weight: 700;
+   text-transform: uppercase;
+   letter-spacing: 3px;
+   margin-bottom: 10px;
+}
