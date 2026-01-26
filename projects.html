@@ -4,146 +4,365 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Hrishitaa Kurchania</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #1b0618;
+            color: #e8d5e3;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Navigation */
+        nav {
+            max-width: 1400px;
+            margin: 0 auto 60px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 30px 0;
+            border-bottom: 1px solid rgba(232, 213, 227, 0.15);
+        }
+
+        nav a {
+            color: #d4b5cc;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #b76ea3;
+        }
+
+        /* Header */
+        .header {
+            max-width: 1400px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            color: #f4ebf1;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 8px rgba(183, 110, 163, 0.4);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #d4b5cc;
+        }
+
+        /* Bubble Cards Container */
+        .projects-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            padding: 20px;
+        }
+
+        /* Bubble Card */
+        .bubble-card {
+            position: relative;
+            background: linear-gradient(135deg, rgba(139, 69, 123, 0.15) 0%, rgba(183, 110, 163, 0.08) 100%);
+            border: 2px solid rgba(183, 110, 163, 0.3);
+            border-radius: 30px;
+            padding: 30px;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .bubble-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(183, 110, 163, 0.15) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .bubble-card:hover::before {
+            opacity: 1;
+        }
+
+        .bubble-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #b76ea3;
+            box-shadow: 0 20px 40px rgba(183, 110, 163, 0.3);
+            background: linear-gradient(135deg, rgba(139, 69, 123, 0.25) 0%, rgba(183, 110, 163, 0.15) 100%);
+        }
+
+        /* Card Image */
+        .card-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            border: 1px solid rgba(183, 110, 163, 0.2);
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .bubble-card:hover .card-image img {
+            transform: scale(1.1);
+        }
+
+        /* Card Content */
+        .card-content h3 {
+            font-size: 1.6rem;
+            color: #f4ebf1;
+            margin-bottom: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .bubble-card:hover .card-content h3 {
+            color: #b76ea3;
+        }
+
+        .card-content p {
+            color: #d4b5cc;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        /* Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: rgba(183, 110, 163, 0.2);
+            border: 1px solid rgba(183, 110, 163, 0.4);
+            color: #e8d5e3;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .bubble-card:hover .tag {
+            background: rgba(183, 110, 163, 0.35);
+            border-color: #b76ea3;
+        }
+
+        /* GitHub Icon */
+        .github-icon {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 30px;
+            height: 30px;
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+
+        .bubble-card:hover .github-icon {
+            opacity: 1;
+            transform: scale(1.2) rotate(360deg);
+        }
+
+        /* Footer */
+        footer {
+            max-width: 1400px;
+            margin: 80px auto 40px;
+            text-align: center;
+            color: #8b6982;
+            padding: 30px 20px;
+            border-top: 1px solid rgba(232, 213, 227, 0.1);
+        }
+
+        footer a {
+            color: #b76ea3;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #d4b5cc;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .projects-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            nav {
+                gap: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <nav>
+        <a href="Hrishitaa.html">Home</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="writings.html">Writings</a>
+        <a href="about.html">About</a>
+    </nav>
 
-    <div class="sticky-nav" id="stickyNav">
-        <a href="Hrishitaa.html" class="nav-item">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-            </svg>
-            <span class="nav-text">Home</span>
-        </a>
-        <a href="projects.html" class="nav-item active">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-            </svg>
-            <span class="nav-text">Projects</span>
-        </a>
-        <a href="writings.html" class="nav-item">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
-            </svg>
-            <span class="nav-text">Writings</span>
-        </a>
-        <a href="about.html" class="nav-item">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-            </svg>
-            <span class="nav-text">About</span>
-        </a>
+    <div class="header">
+        <h1>Hardware & Robotics Projects</h1>
+        <p>Specializing in tactile sensing, bio-inspired mechanisms, and robotic manipulation</p>
     </div>
 
-    <div class="container" style="padding-top: 40px;">
+    <div class="projects-container">
         
-        <h2 class="page-title">Hardware & Robotics Projects</h2> 
-        <p class="page-subtitle">Specializing in tactile sensing, bio-inspired mechanisms, and robotic manipulation</p> 
-        
-        <div class="projects-grid"> 
-            
-            <a href="#" class="project-card"> 
-                <div class="project-image"> 
-                    <img src="finraygripper.png" alt="Finray Gripper"> 
-                </div> 
-                <div class="project-info"> 
-                    <h3>Bio-Inspired Finray Gripper</h3> 
-                    <p style="color: #bbbbbb; font-size: 0.95rem; margin-bottom: 15px;">Developed a compliant gripper mechanism based on fish fin biomechanics. The design enables adaptive conforming to irregular object geometries, improving grasp stability and versatility in robotic manipulation tasks.</p> 
-                    <div class="project-tags"> 
-                        <span class="tag">Mechanical Design</span> 
-                        <span class="tag">Bio-Inspired</span> 
-                        <span class="tag">Soft Robotics</span> 
-                    </div> 
-                </div> 
-            </a> 
+        <!-- Project 1: Finray Gripper -->
+        <a href="https://github.com/ameyj17/Fin-ray-inspired-contact-rich-manipulation" target="_blank" class="bubble-card">
+            <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <div class="card-image">
+                <img src="finraygripper.png" alt="Finray Gripper">
+            </div>
+            <div class="card-content">
+                <h3>Bio-Inspired Finray Gripper</h3>
+                <p>Developed a compliant gripper mechanism based on fish fin biomechanics. The design enables adaptive conforming to irregular object geometries, improving grasp stability and versatility.</p>
+                <div class="tags">
+                    <span class="tag">Mechanical Design</span>
+                    <span class="tag">Bio-Inspired</span>
+                    <span class="tag">Soft Robotics</span>
+                </div>
+            </div>
+        </a>
 
-            <a href="#" class="project-card"> 
-                <div class="project-image"> 
-                    <img src="tactilesensor.png" alt="Tactile Sensor"> 
-                </div> 
-                <div class="project-info"> 
-                    <h3>Visual Tactile Sensor Development</h3> 
-                    <p style="color: #bbbbbb; font-size: 0.95rem; margin-bottom: 15px;">Designed and fabricated silicon-based visual tactile sensors for high-resolution force and contact detection. Integrated computer vision algorithms for real-time tactile feedback in robotic manipulation systems.</p> 
-                    <div class="project-tags"> 
-                        <span class="tag">Sensor Design</span> 
-                        <span class="tag">Computer Vision</span> 
-                        <span class="tag">Fabrication</span> 
-                    </div> 
-                </div> 
-            </a> 
+        <!-- Project 2: Visual Tactile Sensor -->
+        <a href="https://github.com/ameyj17/Visuo-Tactile-Sensing" target="_blank" class="bubble-card">
+            <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <div class="card-image">
+                <img src="tactilesensor.png" alt="Tactile Sensor">
+            </div>
+            <div class="card-content">
+                <h3>Visual Tactile Sensor Development</h3>
+                <p>Designed and fabricated silicon-based visual tactile sensors for high-resolution force and contact detection. Integrated computer vision algorithms for real-time tactile feedback.</p>
+                <div class="tags">
+                    <span class="tag">Sensor Design</span>
+                    <span class="tag">Computer Vision</span>
+                    <span class="tag">Fabrication</span>
+                </div>
+            </div>
+        </a>
 
-            <a href="#" class="project-card"> 
-                <div class="project-image"> 
-                    <img src="demo-tactile.gif" alt="Touch Detection"> 
-                </div> 
-                <div class="project-info"> 
-                    <h3>Resistive Touch Detection System</h3> 
-                    <p style="color: #bbbbbb; font-size: 0.95rem; margin-bottom: 15px;">Built real-time touch sensing platform with custom dashboard for data visualization. Implemented signal processing algorithms for accurate pressure mapping and contact localization.</p> 
-                    <div class="project-tags"> 
-                        <span class="tag">Embedded Systems</span> 
-                        <span class="tag">Signal Processing</span> 
-                        <span class="tag">Data Visualization</span> 
-                    </div> 
-                </div> 
-            </a> 
+        <!-- Project 3: Touch Detection -->
+        <a href="https://github.com/HRISHITAA/resistive-touch-detection" target="_blank" class="bubble-card">
+            <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <div class="card-image">
+                <img src="demo-tactile.gif" alt="Touch Detection">
+            </div>
+            <div class="card-content">
+                <h3>Resistive Touch Detection System</h3>
+                <p>Built real-time touch sensing platform with custom dashboard for data visualization. Implemented signal processing algorithms for accurate pressure mapping.</p>
+                <div class="tags">
+                    <span class="tag">Embedded Systems</span>
+                    <span class="tag">Signal Processing</span>
+                    <span class="tag">Data Visualization</span>
+                </div>
+            </div>
+        </a>
 
-            <a href="#" class="project-card"> 
-                <div class="project-image"> 
-                    <img src="enose.png" alt="E-Nose"> 
-                </div> 
-                <div class="project-info"> 
-                    <h3>Electronic Nose Sensor Array</h3> 
-                    <p style="color: #bbbbbb; font-size: 0.95rem; margin-bottom: 15px;">Engineered multi-sensor electronic nose system for food quality assessment. Developed machine learning pipeline for odor classification and freshness detection using gas sensor arrays.</p> 
-                    <div class="project-tags"> 
-                        <span class="tag">Sensor Arrays</span> 
-                        <span class="tag">Machine Learning</span> 
-                        <span class="tag">PCB Design</span> 
-                    </div> 
-                </div> 
-            </a> 
+        <!-- Project 4: E-Nose -->
+        <a href="https://github.com/HRISHITAA/What-s-Smelling" target="_blank" class="bubble-card">
+            <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <div class="card-image">
+                <img src="enose.png" alt="E-Nose">
+            </div>
+            <div class="card-content">
+                <h3>Electronic Nose Sensor Array</h3>
+                <p>Engineered multi-sensor electronic nose system for food quality assessment. Developed machine learning pipeline for odor classification and freshness detection.</p>
+                <div class="tags">
+                    <span class="tag">Sensor Arrays</span>
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">PCB Design</span>
+                </div>
+            </div>
+        </a>
 
-            <a href="#" class="project-card"> 
-                <div class="project-image"> 
-                    <img src="DSCF4683.JPG" alt="Circuit Building"> 
-                </div> 
-                <div class="project-info"> 
-                    <h3>Electronics Workshop & Education</h3> 
-                    <p style="color: #bbbbbb; font-size: 0.95rem; margin-bottom: 15px;">Led hands-on workshops teaching circuit design fundamentals, PCB development, and embedded programming to aspiring engineers and students.</p> 
-                    <div class="project-tags"> 
-                        <span class="tag">Teaching</span> 
-                        <span class="tag">Electronics</span> 
-                        <span class="tag">Mentorship</span> 
-                    </div> 
-                </div> 
-            </a> 
+        <!-- Project 5: Workshop -->
+        <a href="https://github.com/HRISHITAA/electronics-workshop" target="_blank" class="bubble-card">
+            <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <div class="card-image">
+                <img src="DSCF4683.JPG" alt="Workshop">
+            </div>
+            <div class="card-content">
+                <h3>Electronics Workshop & Education</h3>
+                <p>Led hands-on workshops teaching circuit design fundamentals, PCB development, and embedded programming to aspiring engineers and students.</p>
+                <div class="tags">
+                    <span class="tag">Teaching</span>
+                    <span class="tag">Electronics</span>
+                    <span class="tag">Mentorship</span>
+                </div>
+            </div>
+        </a>
 
-            <a href="#" class="project-card"> 
-                <div class="project-image"> 
-                    <img src="womenrobotics.png" alt="Women in Robotics"> 
-                </div> 
-                <div class="project-info"> 
-                    <h3>Women in Robotics Initiative</h3> 
-                    <p style="color: #bbbbbb; font-size: 0.95rem; margin-bottom: 15px;">Founded and organized community event to promote diversity in robotics and engineering fields. Created networking opportunities and technical workshops for underrepresented groups.</p> 
-                    <div class="project-tags"> 
-                        <span class="tag">Community Building</span> 
-                        <span class="tag">DEI</span> 
-                        <span class="tag">Leadership</span> 
-                    </div> 
-                </div> 
-            </a> 
+        <!-- Project 6: Women in Robotics -->
+        <a href="https://github.com/HRISHITAA/women-in-robotics" target="_blank" class="bubble-card">
+            <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <div class="card-image">
+                <img src="womenrobotics.png" alt="Women in Robotics">
+            </div>
+            <div class="card-content">
+                <h3>Women in Robotics Initiative</h3>
+                <p>Founded and organized community event to promote diversity in robotics and engineering fields. Created networking opportunities and technical workshops.</p>
+                <div class="tags">
+                    <span class="tag">Community Building</span>
+                    <span class="tag">DEI</span>
+                    <span class="tag">Leadership</span>
+                </div>
+            </div>
+        </a>
 
-        </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 Hrishitaa Kurchania. Crafted with code and curiosity.</p>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/hrishitaa-kurchania/" target="_blank">LinkedIn</a> • 
-            <a href="https://github.com/HRISHITAA" target="_blank">GitHub</a> • 
+        <p>© 2026 Hrishitaa Kurchania. Crafted with code and curiosity.</p>
+        <p style="margin-top: 10px;">
+            <a href="https://www.linkedin.com/in/hrishitaa-kurchania/">LinkedIn</a> •
+            <a href="https://github.com/HRISHITAA">GitHub</a> •
             <a href="mailto:hrishitaa8@gmail.com">Email</a>
-        </div>
+        </p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
