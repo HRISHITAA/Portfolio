@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Hrishitaa Kurchania</title>
     <style>
+        /* --- GLOBAL RESET --- */
         * {
             margin: 0;
             padding: 0;
@@ -16,38 +17,90 @@
             background-color: #1b0618;
             color: #e8d5e3;
             line-height: 1.6;
-            padding: 20px;
+            /* Added padding-left to prevent content from hiding behind the side panel */
+            padding: 20px 20px 20px 100px; 
         }
 
-        /* Navigation */
-        nav {
-            max-width: 1400px;
-            margin: 0 auto 60px;
+        /* --- SIDE PANEL NAVIGATION (New) --- */
+        .side-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 80px;
+            background: rgba(27, 6, 24, 0.95);
+            border-right: 1px solid rgba(183, 110, 163, 0.3);
+            backdrop-filter: blur(10px);
             display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
             gap: 40px;
-            padding: 30px 0;
-            border-bottom: 1px solid rgba(232, 213, 227, 0.15);
+            z-index: 1000;
+            box-shadow: 5px 0 20px rgba(0,0,0,0.2);
         }
 
-        nav a {
-            color: #d4b5cc;
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            color: #d4b5cc;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+            position: relative;
         }
 
-        nav a:hover,
-        nav a.active {
+        .nav-icon {
+            width: 28px;
+            height: 28px;
+            margin-bottom: 5px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item:hover {
             color: #b76ea3;
+            opacity: 1;
+            transform: translateY(-3px);
         }
 
-        /* Header */
+        .nav-item:hover .nav-icon {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 8px rgba(183, 110, 163, 0.6));
+        }
+
+        /* Active State */
+        .nav-item.active {
+            color: #b76ea3;
+            opacity: 1;
+            font-weight: bold;
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 30px;
+            background: #b76ea3;
+            border-radius: 0 4px 4px 0;
+            box-shadow: 0 0 10px rgba(183, 110, 163, 0.6);
+        }
+
+        .nav-text {
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- HEADER --- */
         .header {
             max-width: 1400px;
             margin: 0 auto 60px;
             text-align: center;
+            padding-top: 40px; /* Added space since top nav is gone */
         }
 
         .header h1 {
@@ -62,7 +115,7 @@
             color: #d4b5cc;
         }
 
-        /* Bubble Cards Container */
+        /* --- PROJECTS GRID --- */
         .projects-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -72,7 +125,7 @@
             padding: 20px;
         }
 
-        /* Bubble Card */
+        /* --- BUBBLE CARDS --- */
         .bubble-card {
             position: relative;
             background: linear-gradient(135deg, rgba(139, 69, 123, 0.15) 0%, rgba(183, 110, 163, 0.08) 100%);
@@ -208,8 +261,29 @@
             color: #d4b5cc;
         }
 
-        /* Responsive */
+        /* --- RESPONSIVE DESIGN --- */
         @media (max-width: 768px) {
+            /* Move Sidebar to Bottom Bar on Mobile */
+            .side-panel {
+                top: auto;
+                bottom: 0;
+                width: 100%;
+                height: 70px;
+                flex-direction: row;
+                border-right: none;
+                border-top: 1px solid rgba(183, 110, 163, 0.3);
+                padding-bottom: 10px; /* Safe area for swipe bar */
+            }
+
+            .nav-item.active::after {
+                display: none; /* Remove side indicator on mobile */
+            }
+
+            /* Adjust body padding for bottom bar */
+            body {
+                padding: 20px 20px 90px 20px; 
+            }
+
             .header h1 {
                 font-size: 2rem;
             }
@@ -218,45 +292,41 @@
                 grid-template-columns: 1fr;
                 gap: 30px;
             }
-
-            nav {
-                gap: 20px;
-            }
         }
     </style>
 </head>
 <body>
+
     <div class="side-panel">
-    
-    <a href="Hrishitaa.html" class="nav-item">
-        <svg class="nav-icon" viewBox="0 0 24 24">
-            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-        </svg>
-        <span class="nav-text">Home</span>
-    </a>
+        <a href="Hrishitaa.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+            <span class="nav-text">Home</span>
+        </a>
 
-    <a href="projects.html" class="nav-item active">
-        <svg class="nav-icon" viewBox="0 0 24 24">
-            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
-        </svg>
-        <span class="nav-text">Projects</span>
-    </a>
+        <a href="projects.html" class="nav-item active">
+            <svg class="nav-icon" viewBox="0 0 24 24">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+            </svg>
+            <span class="nav-text">Projects</span>
+        </a>
 
-    <a href="writings.html" class="nav-item">
-        <svg class="nav-icon" viewBox="0 0 24 24">
-            <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
-        </svg>
-        <span class="nav-text">Writings</span>
-    </a>
+        <a href="writings.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24">
+                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+            </svg>
+            <span class="nav-text">Writings</span>
+        </a>
 
-    <a href="about.html" class="nav-item">
-        <svg class="nav-icon" viewBox="0 0 24 24">
-            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-        </svg>
-        <span class="nav-text">About</span>
-    </a>
+        <a href="about.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+            <span class="nav-text">About</span>
+        </a>
+    </div>
 
-</div>
     <div class="header">
         <h1>Hardware & Robotics Projects</h1>
         <p>Specializing in tactile sensing, bio-inspired mechanisms, and robotic manipulation</p>
@@ -264,7 +334,6 @@
 
     <div class="projects-container">
         
-        <!-- Project 1: Finray Gripper -->
         <a href="https://github.com/ameyj17/Fin-ray-inspired-contact-rich-manipulation" target="_blank" class="bubble-card">
             <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -283,7 +352,6 @@
             </div>
         </a>
 
-        <!-- Project 2: Visual Tactile Sensor -->
         <a href="https://github.com/ameyj17/Visuo-Tactile-Sensing" target="_blank" class="bubble-card">
             <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -302,7 +370,6 @@
             </div>
         </a>
 
-        <!-- Project 3: Touch Detection -->
         <a href="https://github.com/HRISHITAA/resistive-touch-detection" target="_blank" class="bubble-card">
             <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -321,7 +388,6 @@
             </div>
         </a>
 
-        <!-- Project 4: E-Nose -->
         <a href="https://github.com/HRISHITAA/What-s-Smelling" target="_blank" class="bubble-card">
             <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -340,7 +406,6 @@
             </div>
         </a>
 
-        <!-- Project 5: Workshop -->
         <a href="https://github.com/HRISHITAA/electronics-workshop" target="_blank" class="bubble-card">
             <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -359,7 +424,6 @@
             </div>
         </a>
 
-        <!-- Project 6: Women in Robotics -->
         <a href="https://github.com/HRISHITAA/women-in-robotics" target="_blank" class="bubble-card">
             <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
@@ -385,7 +449,7 @@
         <p style="margin-top: 10px;">
             <a href="https://www.linkedin.com/in/hrishitaa-kurchania/">LinkedIn</a> •
             <a href="https://github.com/HRISHITAA">GitHub</a> •
-            <a href="mailto:hrishitaa8@gmail.com">Email</a>
+            <a href="mailto:hkurchania@gmail.com">Email</a>
         </p>
     </footer>
 </body>
