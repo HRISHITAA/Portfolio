@@ -4,55 +4,256 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hrishitaa Kurchania - Hardware Robotics Engineer</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- GLOBAL RESET --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #120d14; /* Dark Purple/Black Background */
+            color: #e8d5e3;
+            line-height: 1.6;
+            padding-left: 100px; /* IMPORTANT: Pushes content right so Sidebar doesn't cover it */
+        }
+
+        /* --- SIDE PANEL NAVIGATION (The Fix) --- */
+        .side-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 80px;
+            background: rgba(27, 6, 24, 0.95);
+            border-right: 1px solid rgba(183, 110, 163, 0.3);
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            z-index: 1000;
+            box-shadow: 5px 0 20px rgba(0,0,0,0.2);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #d4b5cc;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+            position: relative; /* Vital for the pink active bar */
+            cursor: pointer;
+        }
+
+        .nav-icon {
+            width: 28px;
+            height: 28px;
+            margin-bottom: 5px;
+            fill: currentColor;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-text {
+            font-size: 0.75rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Hover Effects */
+        .nav-item:hover {
+            color: #b76ea3;
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+        .nav-item:hover .nav-icon {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 8px rgba(183, 110, 163, 0.6));
+        }
+
+        /* Active State (Pink Bar) */
+        .nav-item.active {
+            color: #b76ea3;
+            opacity: 1;
+            font-weight: bold;
+        }
+
+        .nav-item.active::after {
+            content: '';
+            position: absolute;
+            left: -26px; /* Positions bar on the far left edge */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 30px;
+            background: #b76ea3;
+            border-radius: 0 4px 4px 0;
+            box-shadow: 0 0 10px rgba(183, 110, 163, 0.6);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 60px;
+            max-width: 1200px;
+        }
+
+        .hero-title {
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .highlight {
+            color: #b76ea3; /* Pink Highlight */
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background: rgba(183, 110, 163, 0.4);
+            z-index: -1;
+            transform: skewX(-20deg);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: #d4b5cc;
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .primary-btn {
+            background-color: #b76ea3;
+            color: #fff;
+            border: 2px solid #b76ea3;
+        }
+
+        .primary-btn:hover {
+            background-color: transparent;
+            box-shadow: 0 0 15px rgba(183, 110, 163, 0.4);
+        }
+
+        .secondary-btn {
+            background-color: transparent;
+            color: #e8d5e3;
+            border: 2px solid rgba(183, 110, 163, 0.4);
+        }
+
+        .secondary-btn:hover {
+            border-color: #b76ea3;
+            color: #fff;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            position: absolute;
+            bottom: 20px;
+            left: 100px;
+            font-size: 0.9rem;
+            color: #8b6982;
+        }
+
+        footer a { color: #b76ea3; text-decoration: none; margin: 0 5px; }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            body { padding-left: 0; padding-bottom: 80px; }
+            .side-panel {
+                width: 100%; height: 70px;
+                top: auto; bottom: 0;
+                flex-direction: row;
+                border-right: none; border-top: 1px solid rgba(183, 110, 163, 0.3);
+            }
+            .hero-title { font-size: 3rem; }
+            .nav-item.active::after { display: none; }
+            footer { position: relative; left: 0; text-align: center; margin-top: 40px;}
+        }
+    </style>
 </head>
 <body>
 
-    <div class="sticky-nav" id="stickyNav">
+    <div class="side-panel">
+        
         <a href="Hrishitaa.html" class="nav-item active">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+            <svg class="nav-icon" viewBox="0 0 24 24">
                 <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
             </svg>
             <span class="nav-text">Home</span>
         </a>
+
         <a href="projects.html" class="nav-item">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+            <svg class="nav-icon" viewBox="0 0 24 24">
                 <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
             </svg>
             <span class="nav-text">Projects</span>
         </a>
+
         <a href="writings.html" class="nav-item">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+            <svg class="nav-icon" viewBox="0 0 24 24">
                 <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
             </svg>
             <span class="nav-text">Writings</span>
         </a>
+
         <a href="about.html" class="nav-item">
-            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+            <svg class="nav-icon" viewBox="0 0 24 24">
                 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
             </svg>
             <span class="nav-text">About</span>
         </a>
+
     </div>
 
     <div class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">
-                Hardware<br>
-                <span class="highlight">Robotics</span><br>
-                Engineer
-            </h1>
-            <p class="hero-subtitle">
-                Bridging the gap between <strong>complex algorithms</strong> and <strong>physical hardware</strong> to build robust, deployment-ready robots.
-            </p>
+        <h1 class="hero-title">
+            Hardware<br>
+            <span class="highlight">Robotics</span><br>
+            Engineer
+        </h1>
+        <p class="hero-subtitle">
+            Bridging the gap between <strong>complex algorithms</strong> and <strong>physical hardware</strong> to build robust, deployment-ready robots.
+        </p>
 
-            <div class="cta-buttons">
+         <div class="cta-buttons">
                 <a href="https://docs.google.com/document/d/1gwRfEYeX59NtwxmM63m4rrR4mCBZ8-zRu16YYxPVU8M/export?format=pdf" class="btn primary-btn">Download CV</a>
                 
                 <a href="https://calendly.com/hrishitaa8/30min" class="btn secondary-btn">Schedule Meeting</a>
             </div>
         </div>
-        
+
         <div class="marquee-container">
             <div class="marquee-track" id="marquee-track">
                 <span>ROS 2 Navigation</span>
@@ -100,7 +301,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Hrishitaa Kurchania. Crafted with code and curiosity.</p>
+        <p>&copy; 2026 Hrishitaa Kurchania • 
         <div class="social-links">
             <a href="https://www.linkedin.com/in/hrishitaa-kurchania/" target="_blank">LinkedIn</a> • 
             <a href="https://github.com/HRISHITAA" target="_blank">GitHub</a> • 
@@ -108,6 +309,5 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
