@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writings - Hrishitaa Kurchania</title>
+    
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* --- WRITING INDEX STYLES --- */
+        .page-container {
+            max-width: 1100px;
+            margin: 80px auto;
+            position: relative;
+            z-index: 1; /* Above particles */
+        }
+        
+        .header {
+            margin-bottom: 80px;
+        }
+
+        .header h1 {
+            font-size: 4rem;
+            color: #f4ebf1;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: #b76ea3;
+            font-weight: 500;
+        }
+
+        /* The Index Layout */
+        .writing-index {
+            display: flex;
+            flex-direction: column;
+            gap: 2px; /* Small gap between rows */
+        }
+
+        .index-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Split in half like the image */
+            padding: 30px 0;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(183, 110, 163, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .index-row:hover {
+            background: rgba(183, 110, 163, 0.05);
+            padding-left: 15px;
+        }
+
+        /* Left Side: Article Title */
+        .index-left h2 {
+            font-size: 1.8rem;
+            color: #f4ebf1;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .index-row:hover .index-left h2 {
+            color: #b76ea3;
+        }
+
+        /* Right Side: Date & Description */
+        .index-right {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .index-date {
+            font-size: 0.9rem;
+            color: #b76ea3;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+
+        .index-description {
+            color: #d4b5cc;
+            font-size: 1.05rem;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Forces exactly 2 lines */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .index-row {
+                grid-template-columns: 1fr; /* Stack on mobile */
+                gap: 15px;
+            }
+            .header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas-bg"></canvas>
+
+    <div class="sticky-nav" id="stickyNav">
+        <a href="Hrishitaa.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <span class="nav-text">Home</span>
+        </a>
+        <a href="projects.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+            <span class="nav-text">Projects</span>
+        </a>
+        <a href="writings.html" class="nav-item active">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+            <span class="nav-text">Writings</span>
+        </a>
+        <a href="about.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <span class="nav-text">About</span>
+        </a>
+    </div>
+
+    <div class="page-container">
+        <div class="header">
+            <h1>Contents:</h1>
+            <p>Robotics / Research / Tutorials</p>
+        </div>
+
+        <div class="writing-index">
+            
+            <a href="fusionCAD2URDF.html" class="index-row">
+                <div class="index-left">
+                    <h2>Fusion 360 to ROS 2</h2>
+                </div>
+                <div class="index-right">
+                    <span class="index-date">January 2026</span>
+                    <p class="index-description">The real-world guide to exporting complex, nested Fusion 360 assemblies into ROS 2 without losing your mind or your coordinate systems.</p>
+                </div>
+            </a>
+
+            <a href="review-paper-1.html" class="index-row">
+                <div class="index-left">
+                    <h2>QGroundControl Setup</h2>
+                </div>
+                <div class="index-right">
+                    <span class="index-date">December 2025</span>
+                    <p class="index-description">A comprehensive overview of setting up QGroundControl for MAVLink-enabled robots and px4 stacks for autonomous flight missions.</p>
+                </div>
+            </a>
+
+            </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

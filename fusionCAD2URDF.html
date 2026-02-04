@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fusion 360 to ROS 2 URDF: The Real-World Guide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="sticky-nav" id="stickyNav">
+        <a href="Hrishitaa.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            </svg>
+            <span class="nav-text">Home</span>
+        </a>
+        <a href="projects.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+            </svg>
+            <span class="nav-text">Projects</span>
+        </a>
+        <a href="writings.html" class="nav-item active">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+            </svg>
+            <span class="nav-text">Writings</span>
+        </a>
+        <a href="about.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+            </svg>
+            <span class="nav-text">About</span>
+        </a>
+    </div>
+
+    <div class="container">
+        <div class="article-content">
+            
+            <div class="article-header">
+                <a href="writings.html" style="font-size: 0.9rem; margin-bottom: 20px; display: inline-block;">← Back to Writings</a>
+                <h1>Fusion 360 to ROS 2 URDF: The Real-World Guide</h1>
+                <div class="meta">
+                    Jan 19, 2026 • Read time: 10 mins 
+                </div>
+            </div>
+
+            <p>
+                <strong>Complementary Documentation for:</strong> <a href="https://github.com/dheena2k2/fusion2urdf-ros2" target="_blank">fusion2urdf-ros2 by dheena2k2</a>
+            </p>
+            
+            <p>
+                The standard README assumes you are a Linux pro and your CAD file is perfect. In reality, you will hit weird structure issues and terminal errors. This guide covers the "hidden steps" required to get a complex, nested Fusion 360 assembly into ROS 2.
+            </p>
+
+            <h2>1. Preparing the CAD (The "Cut & Paste" Method)</h2>
+            
+            <p>
+                You do not need to flatten your entire assembly into a list. You can keep your <strong>Nested Structure</strong> (components inside components), but you <strong>must</strong> ensure the <em>physics</em> bodies are in the correct container. The most common mistake is having the robot's chassis bodies floating in the generic "Main File" rather than inside the <code>base_link</code> component.
+            </p>
+
+            <div class="warning-box">
+                <h3>Step 0: Break All Constraints First</h3>
+                <p>Before you move anything, you must free your components from Fusion's constraints. If you try to Cut & Paste a body that is locked, Fusion will error out.</p>
+                <ol>
+                    <li><strong>Break Links:</strong> If you see a "chain link" icon on any component, right-click it and select <strong>Break Link</strong>. This disconnects it from external files.</li>
+                    <li><strong>Delete Rigid Groups:</strong> Look in the browser for a folder named "Rigid Groups". Delete it entirely. <strong>Do not use Rigid Groups for ROS.</strong></li>
+                    <li><strong>Unground Everything:</strong> Look for any component with a "Pushpin" icon (red or gray). Right-click and select <strong>Unground</strong>.</li>
+                </ol>
+            </div>
+
+            
+            <p style="font-size: 0.9rem; color: #888; text-align: center; margin-top: 10px;">Figure 1: The correct hierarchy. Note that bodies are inside base_link, not floating at the top level.</p>
+
+            <h3>Step A: The "Base Link" Container</h3>
+            <ul>
+                <li><strong>Create the Component:</strong> Right-click the top-level file name in the browser and select <strong>New Component</strong>.</li>
+                <li><strong>Name it:</strong> Name it exactly <code>base_link</code>.</li>
+                <li><strong>Note:</strong> If Fusion names it <code>base_link (1)</code>, you have a duplicate name hidden somewhere. Find it and delete or rename it, or else the script will fail.</li>
+            </ul>
+
+            <h3>Step B: Moving the Bodies (Cut & Paste)</h3>
+            <p>Your chassis parts (plates, brackets, screws) are likely scattered as "Bodies" inside various folders. You need to move them <strong>into</strong> the <code>base_link</code> component.</p>
+            <ol>
+                <li><strong>Activate Base Link:</strong> Click the small circle (🔘) next to your <code>base_link</code> component to activate it.</li>
+                <li><strong>Enable Body Selection:</strong> By default, Fusion selects faces. Go to the top toolbar: <strong>Select > Selection Priority > Select Body Priority</strong>.</li>
+                <li><strong>Select & Cut:</strong> Select all chassis bodies (hold <code>Shift</code>). Press <strong>Cmd+X (Mac)</strong> or <strong>Ctrl+X (Win)</strong>.</li>
+                <li><strong>Paste:</strong> Press <strong>Cmd+V (Mac)</strong> or <strong>Ctrl+V (Win)</strong>.</li>
+                <li><strong>Result:</strong> The bodies move from the old folder into <code>base_link</code>, keeping their exact position in 3D space intact.</li>
+                <li><strong>Ground:</strong> Right click on the <code>base_link</code> and select "Ground to Parent".</li>
+            </ol>
+
+            <h2>2. Joint Configuration</h2>
+            <ul>
+                <li><strong>Use As-Built Joints (Shift + J):</strong> Since your design is already assembled in the correct shape, do not use standard "Joints" (which move parts). Use "As-Built."</li>
+                <li><strong>Selection Order:</strong> When making a joint, select the <strong>Child</strong> (moving part) first, then the <strong>Parent</strong> (stationary part). <br><em>Example:</em> Click <code>Wheel</code> -> Click <code>base_link</code>.</li>
+                <li><strong>Types:</strong>
+                    <ul>
+                        <li><strong>Revolute:</strong> For wheels and arms.</li>
+                        <li><strong>Rigid:</strong> For locking sub-assemblies together (e.g., locking a LIDAR sensor to the chassis).</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            
+            <p style="font-size: 0.9rem; color: #888; text-align: center; margin-top: 10px;">Figure 2: The As-Built Joint menu. Ensure the correct Motion Type is selected.</p>
+
+            <h2>3. Terminal & Script Installation</h2>
+            <p>If you are not used to the command line, the standard installation instructions can cause <code>zsh: parse error</code> or <code>No such file</code> errors.</p>
+
+            <div class="warning-box">
+                <h3>Common Error 1: The "Placeholder" Trap</h3>
+                <p><strong>Error:</strong> <code>cd: no such file or directory: &lt;path to fusion2urdf-ros2&gt;</code></p>
+                <p><strong>Cause:</strong> The text <code>&lt;path to...&gt;</code> is a placeholder.</p>
+                <p><strong>The Fix:</strong> Type <code>cd </code> (with a space), then drag and drop the folder from Finder/Explorer into the terminal window.</p>
+            </div>
+
+            <div class="warning-box">
+                <h3>Common Error 2: The "Wrong Directory"</h3>
+                <p><strong>Error:</strong> <code>cp: ./URDF_Exporter_Ros2: No such file or directory</code></p>
+                <p><strong>The Fix:</strong> Always check where you are before copying. Run <code>ls</code>. If you don't see the script in the list, you are in the wrong folder.</p>
+            </div>
+
+            <h3>The Correct Command Sequence (Mac Example)</h3>
+            <div class="highlight-box">
+# 1. Go to your downloads (or wherever you cloned it)
+cd ~/Downloads/fusion2urdf-ros2
+
+# 2. Verify the file is actually there
+ls
+# (You should see 'URDF_Exporter_Ros2' in the output)
+
+# 3. Copy the script to the Fusion 360 Script folder
+cp -r URDF_Exporter_Ros2 "$HOME/Library/Application Support/Autodesk/Autodesk Fusion 360/API/Scripts/"
+            </div>
+
+            <h2>4. Final Checklist Before Export</h2>
+            <ul>
+                <li><strong>Name Check:</strong> Top component is <code>base_link</code> (no space, no <code>(1)</code>).</li>
+                <li><strong>Body Check:</strong> <code>base_link</code> contains the chassis bodies (they are not sitting in a generic "Component1").</li>
+                <li><strong>Constraint Check:</strong> All Rigid Groups deleted; all components Ungrounded.</li>
+                <li><strong>Joint Check:</strong> Only Rigid or Revolute joints used. No red/yellow warnings.</li>
+                <li><strong>Orientation:</strong> Red axis (X) points Forward. Blue axis (Z) points Up.</li>
+            </ul>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Hrishitaa Kurchania. Crafted with code and curiosity.</p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/hrishitaa-kurchania/" target="_blank">LinkedIn</a> • 
+            <a href="https://github.com/HRISHITAA" target="_blank">GitHub</a> • 
+            <a href="mailto:hrishitaa8@gmail.com">Email</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
