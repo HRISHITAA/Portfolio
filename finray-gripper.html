@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fin-ray Gripper - Hrishitaa Kurchania</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* DASHBOARD GRID SYSTEM */
+        .project-dashboard {
+            max-width: 1300px;
+            margin: 60px auto;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr; /* Left: Analysis | Right: Media */
+            gap: 40px;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* GLASS-MORPHISM INFO CARDS */
+        .info-card {
+            background: rgba(27, 6, 24, 0.6);
+            border: 1px solid rgba(183, 110, 163, 0.3);
+            border-radius: 12px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .card-header {
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(183, 110, 163, 0.1);
+            border-bottom: 1px solid rgba(183, 110, 163, 0.2);
+        }
+
+        .card-header h2 { font-size: 1rem; color: #f4ebf1; text-transform: uppercase; letter-spacing: 1.5px; }
+        .card-content { padding: 25px; color: #d4b5cc; line-height: 1.8; }
+
+        /* DATA TABLE STYLING */
+        .spec-table { width: 100%; border-collapse: collapse; }
+        .spec-table td { padding: 12px 0; border-bottom: 1px solid rgba(183, 110, 163, 0.1); }
+        .spec-label { color: #b76ea3; font-weight: 600; width: 45%; font-size: 0.9rem; }
+        .spec-value { color: #f4ebf1; font-family: 'Courier New', Courier, monospace; }
+
+        /* IMAGE & VISUALS COLUMN */
+        .media-column img {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(183, 110, 163, 0.3);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+
+        /* DATA VISUALIZATION BARS */
+        .stat-bar-container { height: 10px; background: rgba(255,255,255,0.1); border-radius: 5px; margin-top: 8px; overflow: hidden; }
+        .stat-fill { height: 100%; background: #b76ea3; border-radius: 5px; }
+
+        @media (max-width: 1000px) { .project-dashboard { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <canvas id="canvas-bg"></canvas>
+
+    <div class="sticky-nav" id="stickyNav">
+        <a href="Hrishitaa.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <span class="nav-text">Home</span>
+        </a>
+        <a href="projects.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+            <span class="nav-text">Projects</span>
+        </a>
+        <a href="writings.html" class="nav-item active">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+            <span class="nav-text">Writings</span>
+        </a>
+        <a href="about.html" class="nav-item">
+            <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            <span class="nav-text">About</span>
+        </a>
+    </div>
+
+    <div class="project-dashboard">
+        <div class="content-column">
+                <a href="projects.html" style="font-size: 0.9rem; margin-bottom: 20px; display: inline-block;">← Back to Projects</a>
+                
+            <h1 style="color:#f4ebf1; font-size: 3rem; margin-bottom: 5px;">Fin-ray Gripper</h1>
+            <p style="color:#b76ea3; font-weight: 500; margin-bottom: 40px;">Contact-Rich Manipulation & Bio-Inspired Design</p>
+            
+
+            <div class="info-card">
+                <div class="card-header"><h2>Project Overview</h2><span>−</span></div>
+                <div class="card-content">
+                    <p>A novel robotic manipulation system combining adaptive <strong>3D-printed TPU fin-ray structures</strong> with an integrated <strong>8x4 tactile sensor matrix</strong>. The system adapts passively to object geometries while providing real-time feedback for grip adjustment based on slip detection.</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="card-header"><h2>Hardware Architecture</h2><span>+</span></div>
+                <div class="card-content">
+                    <table class="spec-table">
+                        <tr><td class="spec-label">Controller</td><td class="spec-value">Parallax Propeller</td></tr>
+                        <tr><td class="spec-label">Multiplexer</td><td class="spec-value">CD74HC4067 (16-Ch)</td></tr>
+                        <tr><td class="spec-label">Sensor Grid</td><td class="spec-value">Copper Tape + Velostat</td></tr>
+                        <tr><td class="spec-label">Actuator</td><td class="spec-value">High-Torque Servo</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="card-header"><h2>Software Stack & State Machine</h2><span>+</span></div>
+                <div class="card-content">
+                    <p style="margin-bottom: 15px;">Distributed processing across Propeller Cogs for sensor acquisition (Cog 0) and servo control (Cog 1), with Python/OpenCV for state classification.</p>
+                    <div style="margin-top: 10px;">
+                        <span class="state-badge">NO_CONTACT</span>
+                        <span class="state-badge">INITIAL_CONTACT</span>
+                        <span class="state-badge">STABLE</span>
+                        <span class="state-badge">MOTION</span>
+                        <span class="state-badge">SLIP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="media-column">
+            <img src="finray.png" alt="Finray Gripper Assembly">
+
+            <div class="media-column">
+                <img src="slip_detection.png" alt="Gripper Sensor Matrix"> 
+                
+            </div>
+
+            <a href="https://github.com/HRISHITAA/visuo-tactile-sensing" target="_blank" class="info-card" style="display: block; text-align: center; padding: 15px; text-decoration: none; border-style: dashed; border-color: #b76ea3;">
+                <span style="color: #f4ebf1; font-weight: bold; font-size: 0.9rem;">VIEW GITHUB REPOSITORY</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Interactive Accordion Logic
+        document.querySelectorAll('.card-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('span');
+                const isOpen = content.style.display !== 'none';
+                
+                content.style.display = isOpen ? 'none' : 'block';
+                icon.innerText = isOpen ? '+' : '−';
+            });
+        });
+
+        // Default: Close cards marked with '+'
+        document.querySelectorAll('.card-header span').forEach(icon => {
+            if (icon.innerText === '+') {
+                icon.parentElement.nextElementSibling.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

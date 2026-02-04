@@ -100,3 +100,30 @@ class ParticleBackground {
 }
 
 new ParticleBackground();
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.info-card');
+
+    cards.forEach(card => {
+        const header = card.querySelector('.card-header');
+        const icon = header.querySelector('span');
+        const content = card.querySelector('.card-content');
+
+        // Initial state: If header has a '+', hide the content
+        if (icon && icon.innerText === '+') {
+            content.style.display = 'none';
+        }
+
+        header.addEventListener('click', () => {
+            const isHidden = content.style.display === 'none';
+            
+            // Toggle visibility
+            content.style.display = isHidden ? 'block' : 'none';
+            
+            // Toggle icon
+            if (icon) {
+                icon.innerText = isHidden ? '−' : '+';
+            }
+        });
+    });
+});

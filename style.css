@@ -653,3 +653,18 @@ footer {
     z-index: -1; /* Keeps it behind everything */
     pointer-events: none; /* Allows you to click things 'through' the animation */
 }
+
+.card-header {
+    user-select: none; /* Prevents text highlighting on double click */
+}
+
+.card-header span {
+    font-size: 1.5rem;
+    font-family: monospace;
+    color: #b76ea3;
+    transition: transform 0.3s ease;
+}
+
+.card-content {
+    transition: all 0.3s ease-in-out;
+}
