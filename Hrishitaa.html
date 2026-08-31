@@ -105,28 +105,28 @@
   .hamburger{ display:none; }
 
   /* ================= MAIN ================= */
-  .main{ max-width:1000px; }
+  .main{ max-width:1180px; }
 
-  section, footer.section { padding:100px 60px; position:relative; scroll-margin-top:24px; }
+  section, footer.section { padding:64px 60px; position:relative; scroll-margin-top:24px; }
   section + section, footer.section { border-top:1px solid rgba(183,110,163,0.1); }
 
   .page-title{
-    font-size:2.2rem; color:var(--accent-color);
+    font-size:2.3rem; color:var(--accent-color);
     margin-bottom:10px; border-bottom:1px solid rgba(183,110,163,0.3);
-    padding-bottom:15px; display:inline-block;
+    padding-bottom:14px; display:inline-block;
   }
-  .page-subtitle{ color:var(--text-muted); font-size:1.05rem; margin-bottom:40px; max-width:60ch; }
+  .page-subtitle{ color:var(--text-muted); font-size:1.15rem; margin-bottom:34px; max-width:62ch; }
 
   /* ---- hero ---- */
-  #intro{ min-height:100vh; display:flex; flex-direction:column; justify-content:center; border-top:none; }
-  .hero-title{ font-size:clamp(2.4rem, 5vw, 4.5rem); line-height:1.1; margin-bottom:20px; font-weight:800; letter-spacing:-1px; }
+  #intro{ min-height:92vh; display:flex; flex-direction:column; justify-content:center; border-top:none; }
+  .hero-title{ font-size:clamp(2.8rem, 5.2vw, 4.8rem); line-height:1.1; margin-bottom:22px; font-weight:800; letter-spacing:-0.5px; }
   .highlight{ color:var(--accent-color); position:relative; display:inline-block; }
   .highlight::after{
-    content:''; position:absolute; bottom:5px; left:0; width:100%; height:15px;
+    content:''; position:absolute; bottom:5px; left:0; width:100%; height:14px;
     background:var(--accent-glow); z-index:-1; transform:skewX(-20deg);
   }
-  .hero-subtitle{ font-size:1.25rem; color:var(--text-muted); max-width:640px; margin-top:20px; }
-  .cta-buttons{ display:flex; gap:20px; margin-top:40px; flex-wrap:wrap; }
+  .hero-subtitle{ font-size:1.3rem; color:var(--text-muted); max-width:58ch; margin-top:18px; }
+  .cta-buttons{ display:flex; gap:16px; margin-top:32px; flex-wrap:wrap; }
   .btn{
     padding:12px 28px; border-radius:8px; font-weight:600; font-size:0.95rem;
     transition:all 0.3s ease; cursor:pointer; text-transform:uppercase; letter-spacing:0.5px;
@@ -152,7 +152,7 @@
   /* ---- about ---- */
   .about-grid{ display:grid; grid-template-columns:220px 1fr; gap:50px; align-items:start; }
   .about-photo{ width:100%; border-radius:16px; object-fit:cover; border:1px solid rgba(183,110,163,0.3); }
-  .about-bio p{ color:var(--text-main); max-width:64ch; margin-bottom:18px; }
+  .about-bio p{ color:var(--text-main); font-size:1.05rem; max-width:64ch; margin-bottom:18px; }
 
   .edu-list{ margin-top:30px; display:flex; flex-direction:column; gap:20px; }
   .edu-item{ display:grid; grid-template-columns:120px 1fr; gap:16px; padding-bottom:18px; border-bottom:1px solid rgba(183,110,163,0.15); }
@@ -161,6 +161,20 @@
   .edu-degree{ font-weight:700; color:#fff; }
   .edu-school{ color:var(--text-muted); font-size:0.92rem; margin-top:2px; }
 
+  /* ---- experience ---- */
+  .exp-list{ display:flex; flex-direction:column; gap:26px; }
+  .exp-item{
+    background:rgba(183,110,163,0.05); border:1px solid rgba(183,110,163,0.15);
+    border-radius:14px; padding:26px 28px;
+  }
+  .exp-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:14px; }
+  .exp-role{ font-size:1.1rem; font-weight:700; color:#fff; }
+  .exp-company{ color:var(--accent-color); font-size:0.9rem; margin-top:3px; }
+  .exp-date{ font-family:monospace; font-size:0.8rem; color:var(--text-muted); white-space:nowrap; }
+  .exp-bullets{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .exp-bullets li{ color:var(--text-main); font-size:1rem; position:relative; padding-left:18px; }
+  .exp-bullets li::before{ content:"▹"; position:absolute; left:0; color:var(--accent-color); }
+
   /* ---- skills ---- */
   .skills-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:30px; margin-top:10px; }
   .skill-category h4{
@@ -168,7 +182,7 @@
     padding-bottom:5px; font-size:1.05rem; text-transform:uppercase; letter-spacing:1px;
   }
   .skill-category ul{ list-style:none; }
-  .skill-category li{ color:var(--text-main); margin-bottom:9px; font-size:0.95rem; position:relative; padding-left:16px; }
+  .skill-category li{ color:var(--text-main); margin-bottom:10px; font-size:1.02rem; position:relative; padding-left:16px; }
   .skill-category li::before{ content:"▹"; position:absolute; left:0; color:var(--accent-color); }
 
   /* ---- projects ---- */
@@ -180,11 +194,17 @@
   }
   .project-card:hover{ transform:translateY(-5px); border-color:var(--accent-color); box-shadow:0 10px 30px rgba(183,110,163,0.15); }
   .project-image{ width:100%; height:200px; overflow:hidden; background-color:#2a1f2d; border-bottom:1px solid rgba(183,110,163,0.1); }
+  .project-image.placeholder{
+    display:flex; align-items:center; justify-content:center; text-align:center; padding:16px;
+    background:repeating-linear-gradient(45deg, rgba(183,110,163,0.06), rgba(183,110,163,0.06) 10px, rgba(183,110,163,0.02) 10px, rgba(183,110,163,0.02) 20px);
+    border-bottom-style:dashed; border-bottom-color:rgba(183,110,163,0.3);
+  }
+  .project-image.placeholder span{ font-size:0.78rem; color:var(--text-muted); font-family:monospace; }
   .project-image img{ width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease; }
   .project-card:hover .project-image img{ transform:scale(1.05); }
   .project-info{ padding:24px; flex-grow:1; display:flex; flex-direction:column; }
   .project-info h3{ color:#fff; font-size:1.2rem; margin-bottom:10px; }
-  .project-info p{ color:var(--text-muted); font-size:0.92rem; margin-bottom:16px; flex-grow:1; }
+  .project-info p{ color:var(--text-muted); font-size:1rem; margin-bottom:16px; flex-grow:1; }
   .project-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top:auto; margin-bottom:14px; }
   .tag{
     background:rgba(183,110,163,0.15); color:var(--accent-color); padding:4px 12px;
@@ -194,14 +214,46 @@
   .project-link:hover{ color:#fff; border-bottom-color:#fff; }
 
   /* ---- writing ---- */
-  .writings-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:26px; margin-top:30px; }
+  .writings-grid{ display:grid; grid-template-columns:1fr; gap:20px; margin-top:30px; }
   .writing-card{
     background-color:#1a1a20; border:1px solid rgba(183,110,163,0.15); border-radius:16px;
-    padding:28px; transition:all 0.3s ease; display:flex; flex-direction:column; height:100%;
+    padding:28px; transition:border-color 0.3s ease, box-shadow 0.3s ease;
   }
-  .writing-card:hover{ transform:translateY(-5px); border-color:var(--accent-color); box-shadow:0 10px 30px rgba(183,110,163,0.1); }
-  .writing-card h3{ color:#fff; font-size:1.3rem; margin-bottom:12px; }
-  .writing-card p{ color:#bbb; font-size:0.95rem; line-height:1.6; flex-grow:1; margin-bottom:16px; }
+  .writing-card:hover{ border-color:var(--accent-color); box-shadow:0 10px 30px rgba(183,110,163,0.08); }
+  .writing-card summary{ cursor:pointer; list-style:none; }
+  .writing-card summary::-webkit-details-marker{ display:none; }
+  .writing-summary-head{ display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:10px; }
+  .writing-card h3{ color:#fff; font-size:1.3rem; }
+  .writing-meta{ font-family:monospace; font-size:0.78rem; color:var(--accent-color); white-space:nowrap; }
+  .writing-card summary p{ color:#bbb; font-size:0.95rem; line-height:1.6; margin-bottom:14px; }
+  .writing-toggle{ font-size:0.82rem; color:var(--accent-color); border-bottom:1px dotted var(--accent-color); }
+  .writing-card[open] .writing-toggle{ display:none; }
+
+  .article-body{
+    margin-top:26px; padding-top:26px; border-top:1px solid rgba(183,110,163,0.15);
+    color:var(--text-main); font-size:0.95rem; line-height:1.7;
+  }
+  .article-body h3{ color:var(--accent-color); font-size:1.15rem; margin:28px 0 12px; }
+  .article-body h4{ color:#fff; font-size:1rem; margin:20px 0 10px; }
+  .article-body p{ margin-bottom:14px; }
+  .article-body ul, .article-body ol{ margin:0 0 16px 20px; display:flex; flex-direction:column; gap:6px; }
+  .article-body a{ color:var(--accent-color); border-bottom:1px dotted var(--accent-color); }
+  .article-body code{
+    background:rgba(183,110,163,0.12); color:#f4ebf1; padding:2px 6px;
+    border-radius:4px; font-family:monospace; font-size:0.85em;
+  }
+  .article-body .caption{ font-size:0.82rem; color:var(--text-muted); text-align:center; margin:8px 0 20px; }
+  .article-body .article-img{ width:100%; border-radius:10px; border:1px solid rgba(183,110,163,0.2); margin-top:12px; }
+  .warning-box{
+    background:rgba(183,110,163,0.06); border-left:3px solid var(--accent-color);
+    border-radius:0 10px 10px 0; padding:18px 20px; margin:18px 0;
+  }
+  .warning-box p, .warning-box ol, .warning-box ul{ margin-bottom:8px; }
+  .highlight-box{
+    background:#0c090d; border:1px solid rgba(183,110,163,0.2); border-radius:10px;
+    padding:18px 20px; margin:16px 0; font-family:monospace; font-size:0.82rem;
+    color:#d4b5cc; overflow-x:auto; white-space:pre; line-height:1.6;
+  }
 
   /* ---- contact / footer ---- */
   footer.section{ text-align:left; padding-bottom:100px; }
@@ -234,7 +286,7 @@
     main.main{ padding-top:60px; }
   }
   @media (max-width: 520px){
-    .hero-title{ font-size:2.1rem; }
+    .hero-title{ font-size:2.6rem; }
     .cta-buttons{ flex-direction:column; }
     .btn{ text-align:center; }
   }
@@ -269,6 +321,10 @@
       <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
       About
     </a>
+    <a href="#experience" class="nav-item" data-section="experience">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 6h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM10 4h4v2h-4V4z"/></svg>
+      Experience
+    </a>
     <a href="#skills" class="nav-item" data-section="skills">
       <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.2H22l-6 4.4 2.3 7.2-6.3-4.5L5.7 21l2.3-7.2-6-4.4h7.6z"/></svg>
       Skills
@@ -282,6 +338,10 @@
       <a href="#proj-tactile" class="nav-item"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>Visual Tactile Sensor</a>
       <a href="#proj-touch" class="nav-item"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>Touch Detection</a>
       <a href="#proj-enose" class="nav-item"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>Electronic Nose</a>
+      <a href="#proj-atmos" class="nav-item"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>ATMOS Free-Flyer</a>
+      <a href="#proj-smartglasses" class="nav-item"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>Smart Glasses</a>
+      <a href="#proj-formulastudent" class="nav-item"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>Formula Student</a>
+      <a href="#proj-hexacopter" class="nav-item"><svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>RL Hexacopter</a>
     </div>
     <a href="#writing" class="nav-item" data-section="writing">
       <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
@@ -297,7 +357,7 @@
     <a href="https://www.linkedin.com/in/hrishitaa-kurchania/" target="_blank" rel="noopener">LinkedIn ↗</a>
     <a href="https://github.com/HRISHITAA" target="_blank" rel="noopener">GitHub ↗</a>
     <a href="mailto:hkurchania@gmail.com">hkurchania@gmail.com</a>
-    <a class="sb-cv" href="https://docs.google.com/document/d/1gwRfEYeX59NtwxmM63m4rrR4mCBZ8-zRu16YYxPVU8M/export?format=pdf" target="_blank" rel="noopener">Download CV</a>
+    <a class="sb-cv" href="https://docs.google.com/document/d/1gwRfEYeX59NtwxmM63m4rrR4mCBZ8-zRu16YYxPVU8M/preview" target="_blank" rel="noopener">Open CV</a>
   </div>
 </nav>
 
@@ -315,7 +375,7 @@
       Bridging the gap between <strong>complex algorithms</strong> and <strong>physical hardware</strong> to build robust, deployment-ready robots — working across mechanical design, electrical systems, and the software that ties them together.
     </p>
     <div class="cta-buttons">
-      <a class="btn primary-btn" href="https://docs.google.com/document/d/1gwRfEYeX59NtwxmM63m4rrR4mCBZ8-zRu16YYxPVU8M/export?format=pdf" target="_blank" rel="noopener">Download CV</a>
+      <a class="btn primary-btn" href="https://docs.google.com/document/d/1gwRfEYeX59NtwxmM63m4rrR4mCBZ8-zRu16YYxPVU8M/preview" target="_blank" rel="noopener">Open CV</a>
       <a class="btn secondary-btn" href="https://calendly.com/hrishitaa8/30min" target="_blank" rel="noopener">Schedule Meeting</a>
     </div>
 
@@ -335,6 +395,7 @@
       <div class="about-bio">
         <p>I am a <strong>Hardware Robotics Engineer</strong> passionate about bridging the gap between digital perception and physical interaction. My work focuses heavily on <strong>tactile sensing</strong>, <strong>bio-inspired design</strong>, and <strong>human-robot interaction</strong>.</p>
         <p>With a background in Electrical Engineering and Robotics, I enjoy the messy intersection where hardware meets software — whether that's debugging a noisy signal on an oscilloscope, molding silicone for a soft gripper, or writing ROS nodes to visualize sensor data.</p>
+        <p>Open to relocating to work on creative projects and creative hardware projects.</p>
 
         <div class="edu-list">
           <div class="edu-item">
@@ -353,6 +414,83 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h2 class="page-title">Work Experience</h2>
+    <p class="page-subtitle">Research, industry, and field-facing roles across hardware, robotics, and product.</p>
+    <div class="exp-list">
+
+      <div class="exp-item">
+        <div class="exp-head">
+          <div>
+            <div class="exp-role">Research Assistant</div>
+            <div class="exp-company">Riviere Robot Lab · New York, USA</div>
+          </div>
+          <div class="exp-date">Aug 2025 – Present</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Build the modular electromechanical architecture of the ATMOS V2 free-flyer platform, integrating frictionless air-bearing systems, propulsion, and avionics to create a high-fidelity testbed for validating autonomous space robotics.</li>
+          <li>Led the hardware team to integrate the Nvidia Thor and Pixhawk with the QGroundControl platform, designing and building the complete electrical architecture.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-head">
+          <div>
+            <div class="exp-role">ML Researcher</div>
+            <div class="exp-company">Symbiosis Centre for Applied Artificial Intelligence · Pune, India</div>
+          </div>
+          <div class="exp-date">May 2024 – Aug 2024</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Conducted research on search and rescue missions, performing data analysis to identify key trends and insights.</li>
+          <li>Used prompt engineering to generate 2,000+ synthetic images of natural disasters, later tested on a drone onboard SDK.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-head">
+          <div>
+            <div class="exp-role">Project Associate</div>
+            <div class="exp-company">Airport Authority of India · Delhi, India</div>
+          </div>
+          <div class="exp-date">Jan 2024 – Apr 2024</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Developed a drone-based flight inspection roadmap to advance sustainability while cutting fuel usage and manual errors.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-head">
+          <div>
+            <div class="exp-role">Product Management Intern</div>
+            <div class="exp-company">Flytbase Ltd. · Pune, India</div>
+          </div>
+          <div class="exp-date">Jan 2023 – Jun 2023</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Led 2 software and 5 feature launches for the platform.</li>
+          <li>Tested 100+ flight missions as QA and created user documentation, reducing onboarding time and improving client satisfaction for 5+ enterprise users.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-head">
+          <div>
+            <div class="exp-role">Quality Assurance Intern</div>
+            <div class="exp-company">TATA Motors · Pune, India</div>
+          </div>
+          <div class="exp-date">Jun 2022 – Aug 2022</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Redesigned EV wiring architecture and optimized ECU placement to reduce failures and improve efficiency.</li>
+        </ul>
+      </div>
+
     </div>
   </section>
 
@@ -412,6 +550,7 @@
           <h3>Bio-Inspired Finray Gripper</h3>
           <p>Developed a compliant gripper mechanism based on fish fin biomechanics. The design enables adaptive conforming to irregular object geometries.</p>
           <div class="project-tags"><span class="tag">Mechanical Design</span><span class="tag">Bio-Inspired</span></div>
+          <a class="project-link" href="#" target="_blank" rel="noopener">EDIT: add GitHub repo link →</a>
         </div>
       </article>
 
@@ -431,6 +570,7 @@
           <h3>Resistive Touch Detection System</h3>
           <p>Built a real-time touch sensing platform with a custom dashboard for data visualization. Implemented signal processing algorithms for accurate pressure mapping and slip detection.</p>
           <div class="project-tags"><span class="tag">Embedded Systems</span><span class="tag">Signal Processing</span><span class="tag">Data Visualization</span></div>
+          <a class="project-link" href="#" target="_blank" rel="noopener">EDIT: add GitHub repo link →</a>
         </div>
       </article>
 
@@ -443,6 +583,46 @@
           <a class="project-link" href="https://github.com/HRISHITAA/What-s-Smelling" target="_blank" rel="noopener">View on GitHub ↗</a>
         </div>
       </article>
+
+      <article class="project-card" id="proj-atmos">
+        <div class="project-image placeholder"><span>EDIT: add ATMOS photo/render</span></div>
+        <div class="project-info">
+          <h3>ATMOS Free-Flyer Platform</h3>
+          <p>Redesigned a free-flying space robot using air-bearing systems and full avionics integration, creating a high-fidelity validation platform for autonomous space robotics algorithms. Led the hardware team integrating Nvidia Thor and Pixhawk with QGroundControl.</p>
+          <div class="project-tags"><span class="tag">Pixhawk</span><span class="tag">PX4</span><span class="tag">Systems Integration</span><span class="tag">Avionics</span></div>
+          <a class="project-link" href="#" target="_blank" rel="noopener">EDIT: add project link →</a>
+        </div>
+      </article>
+
+      <article class="project-card" id="proj-smartglasses">
+        <div class="project-image placeholder"><span>EDIT: add Smart Glasses photo/demo</span></div>
+        <div class="project-info">
+          <h3>Smart Glasses: AI Digital Twin</h3>
+          <p>Built an AI-driven digital twin using smart glasses to provide real-time guidance and preserve institutional memory for hardware teams. Recognized as a Sponsor Winner at the MIT Hardware Hackathon 2026.</p>
+          <div class="project-tags"><span class="tag">Wearables</span><span class="tag">AI/ML</span><span class="tag">Hackathon Winner</span></div>
+          <a class="project-link" href="#" target="_blank" rel="noopener">EDIT: add project link →</a>
+        </div>
+      </article>
+
+      <article class="project-card" id="proj-formulastudent">
+        <div class="project-image placeholder"><span>EDIT: add Formula Student car photo</span></div>
+        <div class="project-info">
+          <h3>Formula Student — Wrench Wielders Racing</h3>
+          <p>Electrical Team Lead &amp; Racing Driver. Led the team to 1st place at FMAE and top-10 finishes at FSAE, SAE Baja, and FSEV. Designed the battery pack and safety kill-switches; fabricated complete ECU wiring and managed sensor data acquisition, PCB design, and electrical CAD modeling.</p>
+          <div class="project-tags"><span class="tag">Team Leadership</span><span class="tag">Battery &amp; Power Electronics</span><span class="tag">PCB Design</span></div>
+          <a class="project-link" href="#" target="_blank" rel="noopener">EDIT: add project link →</a>
+        </div>
+      </article>
+
+      <article class="project-card" id="proj-hexacopter">
+        <div class="project-image placeholder"><span>EDIT: add Hexacopter photo/sim capture</span></div>
+        <div class="project-info">
+          <h3>RL for Hexacopter Path Planning</h3>
+          <p>Applied reinforcement learning for omnidirectional hexacopter time-of-flight optimization, latency perception, and autonomous path planning.</p>
+          <div class="project-tags"><span class="tag">Reinforcement Learning</span><span class="tag">Path Planning</span><span class="tag">Simulation</span></div>
+          <a class="project-link" href="#" target="_blank" rel="noopener">EDIT: add project link →</a>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -451,10 +631,163 @@
     <h2 class="page-title">Writing</h2>
     <p class="page-subtitle">Notes on hardware, robotics, and the occasional debugging war story.</p>
     <div class="writings-grid">
-      <div class="writing-card">
-        <h3>More coming soon</h3>
-        <p>Longer write-ups on hardware design decisions, debugging stories, and robotics experiments will go here.</p>
-      </div>
+
+      <details class="writing-card">
+        <summary>
+          <div class="writing-summary-head">
+            <h3>Fusion 360 to ROS 2 URDF: The Real-World Guide</h3>
+            <span class="writing-meta">January 2026 · 10 min read</span>
+          </div>
+          <p>The real-world guide to exporting complex, nested Fusion 360 assemblies into ROS 2 without losing your mind or your coordinate systems.</p>
+          <span class="writing-toggle">Read article →</span>
+        </summary>
+
+        <div class="article-body">
+          <p><strong>Complementary Documentation for:</strong> <a href="https://github.com/dheena2k2/fusion2urdf-ros2" target="_blank" rel="noopener">fusion2urdf-ros2 by dheena2k2 ↗</a></p>
+
+          <p>The standard README assumes you are a Linux pro and your CAD file is perfect. In reality, you will hit weird structure issues and terminal errors. This guide covers the "hidden steps" required to get a complex, nested Fusion 360 assembly into ROS 2.</p>
+
+          <h3>1. Preparing the CAD (The "Cut &amp; Paste" Method)</h3>
+          <p>You do not need to flatten your entire assembly into a list. You can keep your <strong>Nested Structure</strong> (components inside components), but you <strong>must</strong> ensure the <em>physics</em> bodies are in the correct container. The most common mistake is having the robot's chassis bodies floating in the generic "Main File" rather than inside the <code>base_link</code> component.</p>
+
+          <div class="warning-box">
+            <h4>Step 0: Break All Constraints First</h4>
+            <p>Before you move anything, you must free your components from Fusion's constraints. If you try to Cut &amp; Paste a body that is locked, Fusion will error out.</p>
+            <ol>
+              <li><strong>Break Links:</strong> If you see a "chain link" icon on any component, right-click it and select <strong>Break Link</strong>. This disconnects it from external files.</li>
+              <li><strong>Delete Rigid Groups:</strong> Look in the browser for a folder named "Rigid Groups". Delete it entirely. <strong>Do not use Rigid Groups for ROS.</strong></li>
+              <li><strong>Unground Everything:</strong> Look for any component with a "Pushpin" icon (red or gray). Right-click and select <strong>Unground</strong>.</li>
+            </ol>
+          </div>
+          <p class="caption">Figure 1: The correct hierarchy. Note that bodies are inside base_link, not floating at the top level.</p>
+
+          <h4>Step A: The "Base Link" Container</h4>
+          <ul>
+            <li><strong>Create the Component:</strong> Right-click the top-level file name in the browser and select <strong>New Component</strong>.</li>
+            <li><strong>Name it:</strong> Name it exactly <code>base_link</code>.</li>
+            <li><strong>Note:</strong> If Fusion names it <code>base_link (1)</code>, you have a duplicate name hidden somewhere. Find it and delete or rename it, or the script will fail.</li>
+          </ul>
+
+          <h4>Step B: Moving the Bodies (Cut &amp; Paste)</h4>
+          <p>Your chassis parts (plates, brackets, screws) are likely scattered as "Bodies" inside various folders. You need to move them <strong>into</strong> the <code>base_link</code> component.</p>
+          <ol>
+            <li><strong>Activate Base Link:</strong> Click the small circle next to your <code>base_link</code> component to activate it.</li>
+            <li><strong>Enable Body Selection:</strong> By default, Fusion selects faces. Go to the top toolbar: <strong>Select &gt; Selection Priority &gt; Select Body Priority</strong>.</li>
+            <li><strong>Select &amp; Cut:</strong> Select all chassis bodies (hold <code>Shift</code>). Press <strong>Cmd+X (Mac)</strong> or <strong>Ctrl+X (Win)</strong>.</li>
+            <li><strong>Paste:</strong> Press <strong>Cmd+V (Mac)</strong> or <strong>Ctrl+V (Win)</strong>.</li>
+            <li><strong>Result:</strong> The bodies move from the old folder into <code>base_link</code>, keeping their exact position in 3D space intact.</li>
+            <li><strong>Ground:</strong> Right click on <code>base_link</code> and select "Ground to Parent".</li>
+          </ol>
+
+          <h3>2. Joint Configuration</h3>
+          <ul>
+            <li><strong>Use As-Built Joints (Shift + J):</strong> Since your design is already assembled in the correct shape, do not use standard "Joints" (which move parts). Use "As-Built."</li>
+            <li><strong>Selection Order:</strong> When making a joint, select the <strong>Child</strong> (moving part) first, then the <strong>Parent</strong> (stationary part). Example: click <code>Wheel</code> → click <code>base_link</code>.</li>
+            <li><strong>Types:</strong> <strong>Revolute</strong> for wheels and arms; <strong>Rigid</strong> for locking sub-assemblies together (e.g. locking a LIDAR sensor to the chassis).</li>
+          </ul>
+          <p class="caption">Figure 2: The As-Built Joint menu. Ensure the correct Motion Type is selected.</p>
+
+          <h3>3. Terminal &amp; Script Installation</h3>
+          <p>If you are not used to the command line, the standard installation instructions can cause <code>zsh: parse error</code> or <code>No such file</code> errors.</p>
+
+          <div class="warning-box">
+            <h4>Common Error 1: The "Placeholder" Trap</h4>
+            <p><strong>Error:</strong> <code>cd: no such file or directory: &lt;path to fusion2urdf-ros2&gt;</code></p>
+            <p><strong>Cause:</strong> The text <code>&lt;path to...&gt;</code> is a placeholder.</p>
+            <p><strong>The Fix:</strong> Type <code>cd </code> (with a space), then drag and drop the folder from Finder/Explorer into the terminal window.</p>
+          </div>
+
+          <div class="warning-box">
+            <h4>Common Error 2: The "Wrong Directory"</h4>
+            <p><strong>Error:</strong> <code>cp: ./URDF_Exporter_Ros2: No such file or directory</code></p>
+            <p><strong>The Fix:</strong> Always check where you are before copying. Run <code>ls</code>. If you don't see the script in the list, you are in the wrong folder.</p>
+          </div>
+
+          <h4>The Correct Command Sequence (Mac Example)</h4>
+          <pre class="highlight-box"># 1. Go to your downloads (or wherever you cloned it)
+cd ~/Downloads/fusion2urdf-ros2
+
+# 2. Verify the file is actually there
+ls
+# (You should see 'URDF_Exporter_Ros2' in the output)
+
+# 3. Copy the script to the Fusion 360 Script folder
+cp -r URDF_Exporter_Ros2 "$HOME/Library/Application Support/Autodesk/Autodesk Fusion 360/API/Scripts/"</pre>
+
+          <h3>4. Final Checklist Before Export</h3>
+          <ul>
+            <li><strong>Name Check:</strong> Top component is <code>base_link</code> (no space, no <code>(1)</code>).</li>
+            <li><strong>Body Check:</strong> <code>base_link</code> contains the chassis bodies (not sitting in a generic "Component1").</li>
+            <li><strong>Constraint Check:</strong> All Rigid Groups deleted; all components Ungrounded.</li>
+            <li><strong>Joint Check:</strong> Only Rigid or Revolute joints used. No red/yellow warnings.</li>
+            <li><strong>Orientation:</strong> Red axis (X) points Forward. Blue axis (Z) points Up.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="writing-card">
+        <summary>
+          <div class="writing-summary-head">
+            <h3>QGroundControl Setup</h3>
+            <span class="writing-meta">December 2025 · 8 min read</span>
+          </div>
+          <p>A comprehensive overview of setting up QGroundControl for MAVLink-enabled robots and PX4 stacks for autonomous flight missions.</p>
+          <span class="writing-toggle">Read article →</span>
+        </summary>
+
+        <div class="article-body">
+          <h3>The Summary</h3>
+          <p>QGroundControl (QGC) provides full flight control and mission planning for any MAVLink-enabled robot. The primary goal is to provide an easily editable user interface for the developer to configure. It serves as the primary ground control station for the PX4 autopilot stack.</p>
+          <p>QGC allows operators to plan complex autonomous missions on a desktop and also provides visual data coming from the vehicle.</p>
+
+          <img src="High-level-connection.png" alt="QGC MAVLink connection diagram" class="article-img">
+          <p class="caption">Figure 1: High-level connection architecture between QGC and the Vehicle.</p>
+
+          <h3>Technical Workflow: PX4 Integration</h3>
+          <h4>1. Installation</h4>
+          <p>Installation directions at the <a href="https://docs.qgroundcontrol.com/master/en/qgc-user-guide/getting_started/download_and_install.html" target="_blank" rel="noopener">QGC User Guide ↗</a>.</p>
+
+          <pre class="highlight-box"># Ubuntu Permission Setup (User to dialout group)
+sudo usermod -aG dialout $USER
+
+# Remove modem manager (interferes with serial ports)
+sudo apt-get remove modemmanager -y
+
+# Install GStreamer (required for video streaming)
+sudo apt install gstreamer1.0-plugins-bad gstreamer1.0-libav</pre>
+
+          <h4>2. Initial Configuration</h4>
+          <p>Once QGC is running, connecting a vehicle's flight controller via USB automatically triggers the setup logic. The <strong>Vehicle Setup</strong> view (gear icon) is where the core configuration happens:</p>
+          <ul>
+            <li><strong>Firmware:</strong> QGC detects the board (e.g. Pixhawk) and offers to flash the stable PX4 Pro stack.</li>
+            <li><strong>Airframe:</strong> Select the specific vehicle geometry (e.g. Hexarotor X, Quadcopter, VTOL) or custom, then "Apply and Restart".</li>
+            <li><strong>Sensors:</strong> A guided wizard walks you through calibrating the Compass (rotating the drone on all axes), Gyroscope (holding it still), and Accelerometer.</li>
+            <li><strong>Radio:</strong> Requires moving the transmitter sticks to their limits to map channels and set min/max values.</li>
+            <li><strong>Joystick:</strong> To enable joystick and disable RC mode, navigate to View → Parameters → search <code>COM_RC_IN_MODE</code>.</li>
+          </ul>
+
+          <img src="COM_RC_IN_MODE.png" alt="COM_RC_IN_MODE parameter setting" class="article-img">
+          <p class="caption">Figure 2: Configuring COM_RC_IN_MODE to enable MAVLink joystick control.</p>
+
+          <h4>3. Flight Modes &amp; Safety</h4>
+          <p>For PX4, you map specific RC switches to flight modes. A common setup involves a 3-position switch configured for:</p>
+          <ol>
+            <li><strong>Position Mode:</strong> GPS-assisted hovering (easiest for beginners).</li>
+            <li><strong>Altitude Mode:</strong> Maintains height but drifts with wind.</li>
+            <li><strong>Return Mode:</strong> Automatically returns the drone to the launch point.</li>
+          </ol>
+
+          <h4>4. Mission Planning &amp; Operation</h4>
+          <p>The <strong>Plan View</strong> allows you to click on the map to place waypoints. For surveying, the "Pattern" tool automates the creation of grid flights for aerial mapping.</p>
+          <p>During flight, the <strong>Fly View</strong> displays the live video feed (if configured) and critical telemetry like battery voltage, satellite count, and altitude.</p>
+
+          <h3>My Perspective</h3>
+          <p>In the robotics ecosystem, the "user experience" is often an afterthought, but QGroundControl changes that narrative. While Mission Planner (the alternative GCS) offers incredibly deep parameters for debugging, QGroundControl shines in its modern, intuitive interface.</p>
+          <p>For field operations, the ability to run QGC on an iPad or Android tablet is a game-changer. It reduces the amount of heavy gear required and simplifies the pre-flight checklist. The touch-optimized interface makes dragging waypoints and adjusting mission parameters feel natural rather than technical.</p>
+          <p>Ultimately, if you are developing new vehicle types or need deep log analysis, you might stick to Mission Planner. But for reliable day-to-day operations and a setup workflow that doesn't require a manual to understand, QGroundControl is the superior choice.</p>
+        </div>
+      </details>
+
     </div>
   </section>
 
