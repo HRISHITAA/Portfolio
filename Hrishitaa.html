@@ -137,18 +137,6 @@
   .secondary-btn{ background-color:transparent; color:var(--text-main); border:2px solid rgba(183,110,163,0.4); }
   .secondary-btn:hover{ border-color:var(--accent-color); color:#fff; }
 
-  .marquee-container{
-    margin-top:60px; width:100%; overflow:hidden; white-space:nowrap; opacity:0.5;
-    border-top:1px solid rgba(183,110,163,0.2); border-bottom:1px solid rgba(183,110,163,0.2);
-    padding:15px 0;
-  }
-  .marquee-track{
-    display:inline-block; animation:scroll 30s linear infinite;
-    font-size:1.1rem; color:var(--text-muted); font-family:monospace; text-transform:uppercase;
-  }
-  .marquee-track span{ padding:0 30px; }
-  @keyframes scroll{ 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
-
   /* ---- about ---- */
   .about-grid{ display:grid; grid-template-columns:220px 1fr; gap:50px; align-items:start; }
   .about-photo{ width:100%; border-radius:16px; object-fit:cover; border:1px solid rgba(183,110,163,0.3); }
@@ -162,18 +150,24 @@
   .edu-school{ color:var(--text-muted); font-size:0.92rem; margin-top:2px; }
 
   /* ---- experience ---- */
-  .exp-list{ display:flex; flex-direction:column; gap:26px; }
+  .exp-list{ display:flex; flex-direction:column; gap:20px; }
   .exp-item{
     background:rgba(183,110,163,0.05); border:1px solid rgba(183,110,163,0.15);
     border-radius:14px; padding:26px 28px;
+    transition:border-color 0.3s ease, box-shadow 0.3s ease;
   }
+  .exp-item:hover{ border-color:var(--accent-color); box-shadow:0 10px 30px rgba(183,110,163,0.08); }
+  .exp-item summary{ cursor:pointer; list-style:none; }
+  .exp-item summary::-webkit-details-marker{ display:none; }
   .exp-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:14px; }
   .exp-role{ font-size:1.1rem; font-weight:700; color:#fff; }
   .exp-company{ color:var(--accent-color); font-size:0.9rem; margin-top:3px; }
   .exp-date{ font-family:monospace; font-size:0.8rem; color:var(--text-muted); white-space:nowrap; }
-  .exp-bullets{ list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .exp-bullets{ list-style:none; display:flex; flex-direction:column; gap:8px; margin-bottom:14px; }
   .exp-bullets li{ color:var(--text-main); font-size:1rem; position:relative; padding-left:18px; }
   .exp-bullets li::before{ content:"▹"; position:absolute; left:0; color:var(--accent-color); }
+  .exp-item[open] .writing-toggle{ display:none; }
+  .exp-detail{ margin-top:20px; padding-top:20px; }
 
   /* ---- skills ---- */
   .skills-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:30px; margin-top:10px; }
@@ -378,13 +372,6 @@
       <a class="btn primary-btn" href="https://docs.google.com/document/d/1gwRfEYeX59NtwxmM63m4rrR4mCBZ8-zRu16YYxPVU8M/preview" target="_blank" rel="noopener">Open CV</a>
       <a class="btn secondary-btn" href="https://calendly.com/hrishitaa8/30min" target="_blank" rel="noopener">Schedule Meeting</a>
     </div>
-
-    <div class="marquee-container">
-      <div class="marquee-track">
-        <span>ROS 2 Navigation</span><span>•</span><span>PCB Design</span><span>•</span><span>3D CAD Modeling</span><span>•</span><span>Power Electronics</span><span>•</span><span>ECAD</span><span>•</span><span>Computer Vision</span><span>•</span><span>MATLAB/Simulink</span><span>•</span><span>Python</span><span>•</span><span>FEA</span><span>•</span><span>Linux</span><span>•</span>
-        <span>ROS 2 Navigation</span><span>•</span><span>PCB Design</span><span>•</span><span>3D CAD Modeling</span><span>•</span><span>Power Electronics</span><span>•</span><span>ECAD</span><span>•</span><span>Computer Vision</span><span>•</span><span>MATLAB/Simulink</span><span>•</span><span>Python</span><span>•</span><span>FEA</span><span>•</span><span>Linux</span><span>•</span>
-      </div>
-    </div>
   </section>
 
   <!-- ABOUT -->
@@ -420,76 +407,113 @@
   <!-- EXPERIENCE -->
   <section id="experience">
     <h2 class="page-title">Work Experience</h2>
-    <p class="page-subtitle">Research, industry, and field-facing roles across hardware, robotics, and product.</p>
+    <p class="page-subtitle">Research, industry, and field-facing roles across hardware, robotics, and product. Click a role to expand.</p>
     <div class="exp-list">
 
-      <div class="exp-item">
-        <div class="exp-head">
-          <div>
-            <div class="exp-role">Research Assistant</div>
-            <div class="exp-company">Riviere Robot Lab · New York, USA</div>
+      <details class="exp-item">
+        <summary>
+          <div class="exp-head">
+            <div>
+              <div class="exp-role">Research Assistant</div>
+              <div class="exp-company">Riviere Robot Lab · New York, USA</div>
+            </div>
+            <div class="exp-date">Aug 2025 – Present</div>
           </div>
-          <div class="exp-date">Aug 2025 – Present</div>
+          <ul class="exp-bullets">
+            <li>Building the electromechanical guts of a free-flying space robot — air-bearings, avionics, and the wiring that keeps it all from floating off unsupervised.</li>
+          </ul>
+          <span class="writing-toggle">Read more →</span>
+        </summary>
+        <div class="article-body exp-detail">
+          <p>EDIT: Add a longer, detailed write-up of this role here — the problem you were solving, decisions you made, obstacles you hit, and how it turned out. This is where the depth a recruiter is looking for actually lives.</p>
+          <img class="article-img" src="EDIT-add-photo.jpg" alt="EDIT: describe this photo">
+          <p class="caption">EDIT: caption for the photo above</p>
         </div>
-        <ul class="exp-bullets">
-          <li>Build the modular electromechanical architecture of the ATMOS V2 free-flyer platform, integrating frictionless air-bearing systems, propulsion, and avionics to create a high-fidelity testbed for validating autonomous space robotics.</li>
-          <li>Led the hardware team to integrate the Nvidia Thor and Pixhawk with the QGroundControl platform, designing and building the complete electrical architecture.</li>
-        </ul>
-      </div>
+      </details>
 
-      <div class="exp-item">
-        <div class="exp-head">
-          <div>
-            <div class="exp-role">ML Researcher</div>
-            <div class="exp-company">Symbiosis Centre for Applied Artificial Intelligence · Pune, India</div>
+      <details class="exp-item">
+        <summary>
+          <div class="exp-head">
+            <div>
+              <div class="exp-role">ML Researcher</div>
+              <div class="exp-company">Symbiosis Centre for Applied Artificial Intelligence · Pune, India</div>
+            </div>
+            <div class="exp-date">May 2024 – Aug 2024</div>
           </div>
-          <div class="exp-date">May 2024 – Aug 2024</div>
+          <ul class="exp-bullets">
+            <li>Teaching a drone to recognize disaster zones it's never seen, by generating thousands of synthetic ones for it to study.</li>
+          </ul>
+          <span class="writing-toggle">Read more →</span>
+        </summary>
+        <div class="article-body exp-detail">
+          <p>EDIT: Add a longer, detailed write-up of this role here.</p>
+          <img class="article-img" src="EDIT-add-photo.jpg" alt="EDIT: describe this photo">
+          <p class="caption">EDIT: caption for the photo above</p>
         </div>
-        <ul class="exp-bullets">
-          <li>Conducted research on search and rescue missions, performing data analysis to identify key trends and insights.</li>
-          <li>Used prompt engineering to generate 2,000+ synthetic images of natural disasters, later tested on a drone onboard SDK.</li>
-        </ul>
-      </div>
+      </details>
 
-      <div class="exp-item">
-        <div class="exp-head">
-          <div>
-            <div class="exp-role">Project Associate</div>
-            <div class="exp-company">Airport Authority of India · Delhi, India</div>
+      <details class="exp-item">
+        <summary>
+          <div class="exp-head">
+            <div>
+              <div class="exp-role">Project Associate</div>
+              <div class="exp-company">Airport Authority of India · Delhi, India</div>
+            </div>
+            <div class="exp-date">Jan 2024 – Apr 2024</div>
           </div>
-          <div class="exp-date">Jan 2024 – Apr 2024</div>
+          <ul class="exp-bullets">
+            <li>Mapping out how drones can inspect runways faster, cheaper, and with a lot less human error.</li>
+          </ul>
+          <span class="writing-toggle">Read more →</span>
+        </summary>
+        <div class="article-body exp-detail">
+          <p>EDIT: Add a longer, detailed write-up of this role here.</p>
+          <img class="article-img" src="EDIT-add-photo.jpg" alt="EDIT: describe this photo">
+          <p class="caption">EDIT: caption for the photo above</p>
         </div>
-        <ul class="exp-bullets">
-          <li>Developed a drone-based flight inspection roadmap to advance sustainability while cutting fuel usage and manual errors.</li>
-        </ul>
-      </div>
+      </details>
 
-      <div class="exp-item">
-        <div class="exp-head">
-          <div>
-            <div class="exp-role">Product Management Intern</div>
-            <div class="exp-company">Flytbase Ltd. · Pune, India</div>
+      <details class="exp-item">
+        <summary>
+          <div class="exp-head">
+            <div>
+              <div class="exp-role">Product Management Intern</div>
+              <div class="exp-company">Flytbase Ltd. · Pune, India</div>
+            </div>
+            <div class="exp-date">Jan 2023 – Jun 2023</div>
           </div>
-          <div class="exp-date">Jan 2023 – Jun 2023</div>
+          <ul class="exp-bullets">
+            <li>Shipping features, chasing bugs, and flying a hundred test missions so enterprise clients didn't have to find the problems themselves.</li>
+          </ul>
+          <span class="writing-toggle">Read more →</span>
+        </summary>
+        <div class="article-body exp-detail">
+          <p>EDIT: Add a longer, detailed write-up of this role here.</p>
+          <img class="article-img" src="EDIT-add-photo.jpg" alt="EDIT: describe this photo">
+          <p class="caption">EDIT: caption for the photo above</p>
         </div>
-        <ul class="exp-bullets">
-          <li>Led 2 software and 5 feature launches for the platform.</li>
-          <li>Tested 100+ flight missions as QA and created user documentation, reducing onboarding time and improving client satisfaction for 5+ enterprise users.</li>
-        </ul>
-      </div>
+      </details>
 
-      <div class="exp-item">
-        <div class="exp-head">
-          <div>
-            <div class="exp-role">Quality Assurance Intern</div>
-            <div class="exp-company">TATA Motors · Pune, India</div>
+      <details class="exp-item">
+        <summary>
+          <div class="exp-head">
+            <div>
+              <div class="exp-role">Quality Assurance Intern</div>
+              <div class="exp-company">TATA Motors · Pune, India</div>
+            </div>
+            <div class="exp-date">Jun 2022 – Aug 2022</div>
           </div>
-          <div class="exp-date">Jun 2022 – Aug 2022</div>
+          <ul class="exp-bullets">
+            <li>Rewiring an EV's nervous system to fail less often and run a little cleaner.</li>
+          </ul>
+          <span class="writing-toggle">Read more →</span>
+        </summary>
+        <div class="article-body exp-detail">
+          <p>EDIT: Add a longer, detailed write-up of this role here.</p>
+          <img class="article-img" src="EDIT-add-photo.jpg" alt="EDIT: describe this photo">
+          <p class="caption">EDIT: caption for the photo above</p>
         </div>
-        <ul class="exp-bullets">
-          <li>Redesigned EV wiring architecture and optimized ECU placement to reduce failures and improve efficiency.</li>
-        </ul>
-      </div>
+      </details>
 
     </div>
   </section>
