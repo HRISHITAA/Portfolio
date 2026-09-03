@@ -757,16 +757,14 @@
         </summary>
         <div class="article-body">
           <h4>Overview</h4>
-          <p>A team project with Radhika Prayage and Sreekumar Balasubramanian, built around a deliberately constrained platform: the Parallax BASIC Stamp 2 (BS2), a microcontroller with far less processing power and memory than the boards most stair-climbing robots use. The goal was to see how far basic hardware could be pushed toward a task normally reserved for more capable systems.</p>
-          <img class="article-img" src="climbot-cad.jpg" alt="Onshape CAD model of the rocker-bogie chassis linkage">
-          <p class="caption">The rocker-bogie linkage, modeled in Onshape before cutting.</p>
-
+          <p>Built around a deliberately constrained platform: the Parallax BASIC Stamp 2 (BS2), a microcontroller with far less processing power and memory than the boards most stair-climbing robots use. The goal was to see how far basic hardware could be pushed toward a task normally reserved for more capable systems.</p>
+          
           <h4>Mechanical Design</h4>
           <p>Modeled the chassis in Onshape and settled on a rocker-bogie suspension — the same family of mechanism NASA's Mars rovers use — for its simplicity and minimal linkage count. Laser-cut the frame from wood to keep it lightweight, with a locking mechanism built into the connecting planks to stop the structure deforming under load. Six wheels — two each at front, middle, and rear — are each driven by their own DC motor, with two servos at the middle link responsible for lifting the front section during a climb.</p>
 
           <h4>Sensing &amp; Control</h4>
           <p>An IR emitter/detector pair feeds the BS2 a signal whenever a stair edge is detected. On detection, the BS2 commands the servos to rotate the front link upward, reducing the effective height the robot needs to climb; once the front wheels clear the step, the servos return to neutral and the DC motors ramp back up to pull the robot fully onto the stair. Three motor driver boards manage the six DC motors, working around the BS2's limited pin count.</p>
-          <img class="article-img" src="climbot-finished.jpg" alt="Finished Climbot robot showing the breadboard, battery packs, and wiring on top of the chassis">
+          <img class="article-img" src="climbot-finished.gif" alt="Final results of Climbot">
           <p class="caption">The finished build — BS2, motor drivers, and battery packs wired up on the chassis.</p>
 
           <h4>What Broke, and How We Fixed It</h4>
