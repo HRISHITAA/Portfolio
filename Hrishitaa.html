@@ -138,24 +138,13 @@
   .secondary-btn:hover{ border-color:var(--accent-color); color:#fff; }
 
   /* ---- about ---- */
-  .about-grid{ display:grid; grid-template-columns:300px 1fr; gap:60px; align-items:start; }
-  .polaroid-wrap{ position:relative; width:100%; height:340px; }
-  .polaroid{
-    position:absolute; background:#f3efe9; padding:12px 12px 40px;
-    border-radius:2px; box-shadow:0 10px 24px rgba(0,0,0,0.45);
-    transition:transform 0.3s ease, box-shadow 0.3s ease, z-index 0s;
-    cursor:default;
+  .about-grid{ display:grid; grid-template-columns:320px 1fr; gap:50px; align-items:stretch; }
+  .about-photos{ display:flex; flex-direction:column; gap:16px; height:100%; }
+  .about-photos img{
+    width:100%; flex:1; min-height:220px; object-fit:cover;
+    border-radius:14px; border:1px solid rgba(183,110,163,0.3);
+    box-shadow:0 12px 28px rgba(0,0,0,0.35);
   }
-  .polaroid img{ display:block; width:100%; aspect-ratio:1/1; object-fit:cover; }
-  .polaroid .cap{
-    position:absolute; bottom:10px; left:0; right:0; text-align:center;
-    font-family:"Segoe UI", cursive, sans-serif; font-size:0.72rem; color:#3a3a3a; letter-spacing:0.02em;
-  }
-  .polaroid:hover{ transform:rotate(0deg) scale(1.08) !important; box-shadow:0 16px 34px rgba(0,0,0,0.55); z-index:10 !important; }
-  .p1{ width:170px; top:0; left:10px; transform:rotate(-8deg); z-index:1; }
-  .p2{ width:150px; top:30px; left:150px; transform:rotate(6deg); z-index:2; }
-  .p3{ width:160px; top:150px; left:0; transform:rotate(4deg); z-index:3; }
-  .p4{ width:145px; top:175px; left:155px; transform:rotate(-5deg); z-index:1; }
   .about-bio p{ color:var(--text-main); font-size:1.05rem; max-width:64ch; margin-bottom:18px; }
 
   .edu-list{ margin-top:30px; display:flex; flex-direction:column; gap:20px; }
@@ -297,9 +286,8 @@
     section, footer.section{ padding:60px 24px; }
     #intro{ padding-top:100px; min-height:auto; }
     .about-grid{ grid-template-columns:1fr; }
-    .polaroid-wrap{ height:auto; display:flex; flex-wrap:wrap; gap:16px; justify-content:center; padding:10px 0 20px; }
-    .polaroid{ position:static !important; transform:rotate(0deg) !important; width:130px !important; }
-    .polaroid:hover{ transform:scale(1.05) !important; }
+    .about-photos{ height:auto; }
+    .about-photos img{ min-height:200px; }
     main.main{ padding-top:60px; }
   }
   @media (max-width: 520px){
@@ -400,11 +388,9 @@
   <section id="about">
     <h2 class="page-title">About Me</h2>
     <div class="about-grid">
-      <div class="polaroid-wrap">
-        <div class="polaroid p1"><img src="polaroid-headshot.jpg" alt="Hrishitaa Kurchania"><span class="cap">hi, that's me</span></div>
-        <div class="polaroid p2"><img src="polaroid-lab.jpg" alt="In the lab with a robotic arm"><span class="cap">in the lab</span></div>
-        <div class="polaroid p3"><img src="polaroid-sensor.jpg" alt="Testing the tactile sensor"><span class="cap">sensor testing</span></div>
-        <div class="polaroid p4"><img src="polaroid-swe25.jpg" alt="At the SWE25 conference"><span class="cap">WE25 conference</span></div>
+      <div class="about-photos">
+        <img src="DSC_9585.jpg" alt="In the lab with the Trossen robotic arm">
+        <img src="DSCF4683.JPG" alt="Working with a team during a hands-on electronics workshop">
       </div>
       <div class="about-bio">
         <p>I am a <strong>Hardware Robotics Engineer</strong> passionate about bridging the gap between digital perception and physical interaction. My work focuses heavily on <strong>tactile sensing</strong>, <strong>bio-inspired design</strong>, and <strong>human-robot interaction</strong>.</p>
@@ -453,9 +439,12 @@
           <span class="writing-toggle">Read more →</span>
         </summary>
         <div class="article-body exp-detail">
-          <p>EDIT: Add a longer, detailed write-up of this role here — the problem you were solving, decisions you made, obstacles you hit, and how it turned out. This is where the depth a recruiter is looking for actually lives.</p>
-          <img class="article-img" src="EDIT-add-photo.jpg" alt="EDIT: describe this photo">
-          <p class="caption">EDIT: caption for the photo above</p>
+          <p>Built the electromechanical side of ATMOS end-to-end — the wiring harness, custom jigs, mechanical parts, and final assembly — while integrating the compute stack: bringing up the Pixhawk alongside a Jetson Nano and later migrating that link over to an Nvidia Thor as the platform's compute needs grew. Learned PX4 and QGroundControl from the ground up to actually fly and control the robot, worked on its mechanical control systems, and ran test-automation passes to validate behavior. Built the first working prototype in about 4 months, then spent roughly a month testing it and supporting the algorithms team.</p>
+
+          <h4>What Broke, and How I Fixed It</h4>
+          <p>On the second prototype, we swapped the thrusters for propellers — and by the 5th to 10th test run, the propeller mounts would start melting and at least one motor would burn out each time. The supports were TPU-printed, and turbulent "dirty air" off adjacent propellers was cooking them under sustained load. Redesigned the mounts in 3D-printed carbon fiber and repositioned them to improve airflow and keep each propeller clear of its neighbors' turbulence, which solved the overheating. Alongside that, went back into the control system and corrected the thrust commands.</p>
+          <img class="article-img" src="riviere-arm-work.jpg" alt="Working on the Trossen robotic arm's wiring in the lab">
+          <p class="caption">Hands-on with the arm's wiring during assembly.</p>
         </div>
       </details>
 
@@ -474,9 +463,7 @@
           <span class="writing-toggle">Read more →</span>
         </summary>
         <div class="article-body exp-detail">
-          <p>EDIT: Add a longer, detailed write-up of this role here.</p>
-          <img class="article-img" src="EDIT-add-photo.jpg" alt="EDIT: describe this photo">
-          <p class="caption">EDIT: caption for the photo above</p>
+          <p>Generated a synthetic image dataset spanning multiple disaster types — flooding, fire, structural collapse, and similar — so a model could learn to tell them apart without relying on scarce real-world disaster footage. Trained a classifier on this dataset and tested it on a drone's onboard SDK, so the drone could look at a scene through its camera and identify what kind of disaster it was seeing. The bigger goal: give search-and-rescue drones a faster read on what they're flying into, before a human ever looks at the footage.</p>
         </div>
       </details>
 
@@ -495,9 +482,8 @@
           <span class="writing-toggle">Read more →</span>
         </summary>
         <div class="article-body exp-detail">
-          <p>EDIT: Add a longer, detailed write-up of this role here.</p>
-          <img class="article-img" src="EDIT-add-photo.jpg" alt="EDIT: describe this photo">
-          <p class="caption">EDIT: caption for the photo above</p>
+          <p>Authored a research review for AAI's Flight Inspection Unit, submitted to the Executive Director, on drone-based Instrument Landing System (ILS) inspection as an alternative to traditional manned flight inspection — which carries real safety risk, high emissions, and heavy operational cost. The review synthesized approaches and results from flight inspection programs already running in the Netherlands, China, and the US, and proposed a roadmap (sensor fusion, autonomous flight paths, signal analysis, and biomimicry-inspired designs) for how AAI could begin structuring its own drone inspection capability.</p>
+          <p>Case studies pulled into the review showed what was actually possible elsewhere: one drone-based ILS calibration program cut calibration time by 60%, runway closure time by 75%, and improved measurement accuracy by 30%. This work went on to directly inform how AAI approached and began its own research and implementation of drone-based inspection.</p>
         </div>
       </details>
 
@@ -516,9 +502,10 @@
           <span class="writing-toggle">Read more →</span>
         </summary>
         <div class="article-body exp-detail">
-          <p>EDIT: Add a longer, detailed write-up of this role here.</p>
-          <img class="article-img" src="EDIT-add-photo.jpg" alt="EDIT: describe this photo">
-          <p class="caption">EDIT: caption for the photo above</p>
+          <p>My core job was translation: figure out what the customer actually needed, then turn that into a technical plan the robotics, software, and other teams could actually build against — timelines, feature nuances, and all the decisions in between spelled out clearly enough that nothing got lost moving from "what the client asked for" to "what engineering shipped."</p>
+          <p>Ran extensive feature research and wrote the technical documentation that came out of it, then worked directly with the testing team to understand what a feature actually needed to deliver and put it through its paces myself — QA-testing 100+ flight missions along the way. Also integrated an AI-driven chatbot into the platform to improve the support experience. On the other end of the pipeline, once a feature was actually built, I onboarded enterprise clients onto it myself, using both the technical background to explain how it worked and the communication side to make sure it actually landed — shipping 2 software and 5 feature launches this way, with measurably faster onboarding and better client satisfaction across 5+ enterprise accounts.</p>
+          <img class="article-img" src="flytbase-drone-test.jpg" alt="Rooftop drone flight test with a teammate at Flytbase">
+          <p class="caption">Running a rooftop flight test as part of the QA process.</p>
         </div>
       </details>
 
@@ -537,8 +524,17 @@
           <span class="writing-toggle">Read more →</span>
         </summary>
         <div class="article-body exp-detail">
-          <p>EDIT: Add a longer, detailed write-up of this role here.</p>
-          
+          <h4>The Problem</h4>
+          <p>A commercial truck's Engine ECU (the module governing charging, emissions, transmission, ABS, fuel injection, and ignition timing — essentially the vehicle's brain for everything engine-side) had a recurring failure showing up both during driving and even at rest. My project was tracking that failure down to its root cause and fixing it.</p>
+
+          <h4>Investigation</h4>
+          <p>Started by spending time at the warranty garage to see the actual failed units and get familiar with how they were failing in the field, then worked with suppliers and sat in on warranty meetings to understand how each electrical and mechanical component was actually manufactured and specified. From there, worked inward systematically: mapped the vehicle's full wiring harness first, then the EMS wiring specific to the Engine ECU, and finally analyzed the ECU's internal circuitry itself — with suppliers and supervisors filling in the detail needed to isolate the actual fault.</p>
+
+          <h4>Root Cause &amp; Fix</h4>
+          <p>Traced the failure to a sensor grounding issue. Fixed it by adding a bipolar switch to correct the grounding path, and separately added a correctly-rated external fuse that cut down excess current reaching the ECU — which lowered the heat and electrical stress the board was absorbing, addressing the underlying cause rather than just the symptom.</p>
+
+          <h4>Beyond the ECU</h4>
+          <p>The internship also covered the assembly, engine, and chassis lines — full assembly procedure, progressive quality checks, and man-machine management — plus hands-on time with the VQA team using PLM to resolve design-related issues daily, visits to TML's ancillary suppliers to study their manufacturing and defect-reduction methods, and a collaboration with Bosch to eliminate defects in their 3.3L ECU.</p>
         </div>
       </details>
 
@@ -709,22 +705,22 @@
       </details>
 
       <details class="project-card" id="proj-smartglasses">
-    <summary>
-      <div class="project-image"><img src="smartglasses-hackathon.jpg" alt="Team holding the Hard Mode MIT Hardware x AI Hackathon winner sign and prize check"></div>
-      <div class="project-info">
-        <h3>Smart Glasses: AI Digital Twin</h3>
-        <p>Built an AI-driven digital twin using smart glasses to provide real-time guidance and preserve institutional memory for hardware teams. Recognized as a Sponsor Winner at the MIT Hardware Hackathon 2026.</p>
-        <div class="project-tags"><span class="tag">Wearables</span><span class="tag">AI/ML</span><span class="tag">Hackathon Winner</span></div>
-        <a class="project-link" href="https://github.com/chirantan2003/mit-hackathon" target="_blank" rel="noopener">View on GitHub ↗</a>
-        <span class="writing-toggle">Read more →</span>
-      </div>
-    </summary>
-    <div class="article-body">
-      <p>Built at the MIT Hardware x AI Hackathon ("Hard Mode") with a small team. The glasses project step-by-step assembly guidance directly onto the workspace in front of you, and log what was actually done as a running digital-twin record — so the next person on a hardware team doesn't have to relearn tribal knowledge from scratch every time someone leaves the project.</p>
-      <img class="article-img" src="IMG_2151.jpeg" alt="AR wiring guide projected onto the workbench during a live demo">
-      <p class="caption">The AR guide projected onto the workbench mid-build, walking through a wiring step.</p>
-    </div>
-  </details>
+        <summary>
+          <div class="project-image"><img src="smartglasses-hackathon.jpg" alt="Team holding the Hard Mode MIT Hardware x AI Hackathon winner sign and prize check"></div>
+          <div class="project-info">
+            <h3>Smart Glasses: AI Digital Twin</h3>
+            <p>Built an AI-driven digital twin using smart glasses to provide real-time guidance and preserve institutional memory for hardware teams. Recognized as a Sponsor Winner at the MIT Hardware Hackathon 2026.</p>
+            <div class="project-tags"><span class="tag">Wearables</span><span class="tag">AI/ML</span><span class="tag">Hackathon Winner</span></div>
+            <a class="project-link" href="https://github.com/chirantan2003/mit-hackathon" target="_blank" rel="noopener">View on GitHub ↗</a>
+            <span class="writing-toggle">Read more →</span>
+          </div>
+        </summary>
+        <div class="article-body">
+          <p>Built at the MIT Hardware x AI Hackathon ("Hard Mode") with a small team. The glasses project step-by-step assembly guidance directly onto the workspace in front of you, and log what was actually done as a running digital-twin record — so the next person on a hardware team doesn't have to relearn tribal knowledge from scratch every time someone leaves the project.</p>
+          <img class="article-img" src="IMG_2151.jpeg" alt="AR wiring guide projected onto the workbench during a live demo">
+          <p class="caption">The AR guide projected onto the workbench mid-build, walking through a wiring step.</p>
+        </div>
+      </details>
 
       <details class="project-card" id="proj-formulastudent">
         <summary>
@@ -738,8 +734,17 @@
           </div>
         </summary>
         <div class="article-body">
-          <h4>What I Owned</h4>
-          <p>As Electrical Team Lead, designed the battery pack and safety kill-switches, fabricated the complete ECU wiring harness, and handled sensor data acquisition, PCB design, and electrical CAD modeling for the car — while also driving in competition.</p>
+          <h4>Electrical Systems</h4>
+          <p>Designed the car's battery pack and safety kill-switches, fabricated the complete wiring harness end to end — routing, terminating, and protecting cabling through a chassis and engine bay with very little room to spare — and owned sensor data acquisition, PCB design, and the electrical CAD modeling that the whole system was built against before a single wire was cut.</p>
+
+          <h4>Assembly &amp; Technical Inspection</h4>
+          <p>Hands-on for every build cycle ahead of competition: fitting the harness into the chassis, integrating sensors and the ECU, and running continuity and safety checks to get the car through technical inspection — the mandatory safety and rules check every car has to clear before it's allowed on track.</p>
+
+          <h4>Competitions</h4>
+          <p>Competed across FMAE, FSAE, SAE Baja, and FSEV — placing 1st at FMAE and top-10 at the other three. Each event stressed the electrical build differently: endurance and autocross runs put the wiring and sensor systems through sustained real-world vibration and load, while technical inspection at every event forced the safety systems (kill-switches, insulation, grounding) to hold up to close external scrutiny.</p>
+
+          <h4>Second Driver</h4>
+          <p>Beyond the electrical bench, I was the team's second driver, competing in the car I'd helped wire and assemble — which meant living with the consequences of my own electrical decisions in real driving conditions, not just on a bench test.</p>
         </div>
       </details>
 
