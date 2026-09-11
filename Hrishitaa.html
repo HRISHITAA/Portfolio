@@ -173,6 +173,16 @@
   .exp-bullets li::before{ content:"▹"; position:absolute; left:0; color:var(--accent-color); }
   .exp-item[open] .writing-toggle{ display:none; }
   .exp-detail{ margin-top:20px; padding-top:20px; }
+  .exp-photo-layout{ display:flex; gap:24px; align-items:flex-start; }
+  .exp-photo-layout img{ width:220px; flex-shrink:0; border-radius:10px; border:1px solid rgba(183,110,163,0.25); box-shadow:0 8px 20px rgba(0,0,0,0.3); }
+  .exp-photo-layout .exp-content{ flex:1; min-width:0; }
+  .exp-detail-list{ list-style:none; display:flex; flex-direction:column; gap:9px; }
+  .exp-detail-list li{ position:relative; padding-left:18px; color:var(--text-main); font-size:0.95rem; }
+  .exp-detail-list li::before{ content:"▹"; position:absolute; left:0; color:var(--accent-color); }
+  @media (max-width: 640px){
+    .exp-photo-layout{ flex-direction:column; }
+    .exp-photo-layout img{ width:100%; }
+    }
 
   /* ---- skills ---- */
   .skills-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:30px; margin-top:10px; }
@@ -429,19 +439,17 @@
           </ul>
           <span class="writing-toggle">Read more →</span>
         </summary>
-        <div class="article-body exp-detail">
-          <div class="exp-photo-layout">
-            <img src="polaroid-headshot_1.jpg" alt="Inspecting wiring in the lab">
-            <div class="exp-content">
-              <ul class="exp-detail-list">
-                <li>Built the electromechanical side of ATMOS end-to-end: wiring harness, custom jigs, mechanical parts, and final assembly</li>
-                <li>Integrated the compute stack — brought up the Pixhawk alongside a Jetson Nano, later migrated that link to an Nvidia Thor as compute needs grew</li>
-                <li>Learned PX4 and QGroundControl from the ground up to fly and control the robot; worked on its mechanical control systems</li>
-                <li>Ran test-automation passes to validate behavior</li>
-                <li>Built the first working prototype in about 4 months, then spent roughly a month testing it and supporting the algorithms team</li>
-                <li>Diagnosed a propeller-mount overheating failure on the second prototype (mounts melting, motors burning out by the 5th–10th test run) — fixed it by redesigning the mounts in 3D-printed carbon fiber, repositioning them for better airflow, and correcting the thrust commands</li>
-              </ul>
-            </div>
+        <div class="exp-photo-layout">
+          <img src="riviere-arm-work.jpg" alt="Working on the Trossen robotic arm's wiring in the lab">
+          <div class="exp-content">
+            <ul class="exp-detail-list">
+              <li>Built the electromechanical side of ATMOS end-to-end: wiring harness, custom jigs, mechanical parts, and final assembly</li>
+              <li>Integrated the compute stack — brought up the Pixhawk alongside a Jetson Nano, later migrated that link to an Nvidia Thor as compute needs grew</li>
+              <li>Learned PX4 and QGroundControl from the ground up to fly and control the robot; worked on its mechanical control systems</li>
+              <li>Ran test-automation passes to validate behavior</li>
+              <li>Built the first working prototype in about 4 months, then spent roughly a month testing it and supporting the algorithms team</li>
+              <li>Diagnosed a propeller-mount overheating failure on the second prototype (mounts melting, motors burning out by the 5th–10th test run) — fixed it by redesigning the mounts in 3D-printed carbon fiber, repositioning them for better airflow, and correcting the thrust commands</li>
+            </ul>
           </div>
         </div>
       </details>
@@ -510,19 +518,17 @@
           </ul>
           <span class="writing-toggle">Read more →</span>
         </summary>
-        <div class="article-body exp-detail">
-          <div class="exp-photo-layout">
-            <img src="IMG20230516182735.jpg" alt="Rooftop drone flight test with a teammate at Flytbase">
-            <div class="exp-content">
-              <ul class="exp-detail-list">
-                <li>Core role: translate what the customer actually needed into a technical plan the robotics, software, and other teams could build against — timelines, feature nuances, and every decision spelled out clearly</li>
-                <li>Ran extensive feature research and wrote the resulting technical documentation</li>
-                <li>Worked with the testing team to understand what a feature needed to deliver, and personally QA-tested 100+ flight missions</li>
-                <li>Integrated an AI-driven chatbot into the platform to improve the support experience</li>
-                <li>Onboarded enterprise clients onto new features myself, using both technical background and communication skills</li>
-                <li>Shipped 2 software and 5 feature launches this way, with measurably faster onboarding and better satisfaction across 5+ enterprise accounts</li>
-              </ul>
-            </div>
+        <div class="exp-photo-layout">
+          <img src="flytbase-drone-test.jpg" alt="Rooftop drone flight test with a teammate at Flytbase">
+          <div class="exp-content">
+            <ul class="exp-detail-list">
+              <li>Core role: translate what the customer actually needed into a technical plan the robotics, software, and other teams could build against — timelines, feature nuances, and every decision spelled out clearly</li>
+              <li>Ran extensive feature research and wrote the resulting technical documentation</li>
+              <li>Worked with the testing team to understand what a feature needed to deliver, and personally QA-tested 100+ flight missions</li>
+              <li>Integrated an AI-driven chatbot into the platform to improve the support experience</li>
+              <li>Onboarded enterprise clients onto new features myself, using both technical background and communication skills</li>
+              <li>Shipped 2 software and 5 feature launches this way, with measurably faster onboarding and better satisfaction across 5+ enterprise accounts</li>
+            </ul>
           </div>
         </div>
       </details>
